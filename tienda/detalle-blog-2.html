@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cómo la Generación IV marcó un antes y un después en Pokémon: Nintendo DS, conexión online y la región de Sinnoh.">
+  <meta name="author" content="Equipo DSY1104">
+  <meta name="theme-color" content="#1A052A">
+
+  <title>Cómo la Generación IV marcó un antes y un después en Pokémon | PokéTienda Pearl</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon-perla.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Inter:wght@400;600&family=Fredoka+One&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+  <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+
+  <!-- ==========================================================
+       HEADER
+       ========================================================== -->
+  <header class="site-header">
+    <div class="contenedor site-header__inner">
+
+      <a href="index.html" class="logo" aria-label="PokéTienda Pearl — Ir al inicio">
+        <svg class="logo__icono" width="40" height="40" viewBox="0 0 100 100" role="img" aria-hidden="true" focusable="false">
+          <defs>
+            <radialGradient id="pearlGrad" cx="30%" cy="30%" r="70%">
+              <stop offset="0%"   stop-color="#FFFFFF"/>
+              <stop offset="50%"  stop-color="#D63384"/>
+              <stop offset="100%" stop-color="#4A148C"/>
+            </radialGradient>
+          </defs>
+          <circle cx="50" cy="50" r="45" fill="url(#pearlGrad)" stroke="#FFC107" stroke-width="3"/>
+          <ellipse cx="35" cy="35" rx="10" ry="6" fill="#FFFFFF" opacity="0.6"/>
+        </svg>
+        <span class="logo__texto">PokéTienda&nbsp;Pearl</span>
+      </a>
+
+      <button type="button"
+              class="nav-toggle"
+              id="nav-toggle"
+              aria-expanded="false"
+              aria-controls="nav-principal"
+              aria-label="Abrir menú de navegación">
+        <span class="nav-toggle__barra" aria-hidden="true"></span>
+        <span class="nav-toggle__barra" aria-hidden="true"></span>
+        <span class="nav-toggle__barra" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav" id="nav-principal" aria-label="Navegación principal">
+        <ul class="nav__lista">
+          <li class="nav__item"><a class="nav__enlace" href="index.html">Inicio</a></li>
+          <li class="nav__item"><a class="nav__enlace" href="productos.html">Productos</a></li>
+          <li class="nav__item"><a class="nav__enlace" href="nosotros.html">Nosotros</a></li>
+          <li class="nav__item"><a class="nav__enlace nav__enlace--activo" href="blogs.html">Blogs</a></li>
+          <li class="nav__item"><a class="nav__enlace" href="contacto.html">Contacto</a></li>
+          <li class="nav__item"><a class="nav__enlace nav__enlace--destacado" href="login.html">Iniciar sesión</a></li>
+        </ul>
+      </nav>
+
+      <a href="carrito.html" class="carrito" id="carrito" aria-label="Carrito de compras: 0 productos">
+        <svg class="carrito__icono" width="26" height="26" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round"
+             role="img" aria-hidden="true" focusable="false">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="carrito__badge" id="carrito-contador" role="status" aria-live="polite">0</span>
+      </a>
+
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       CONTENIDO PRINCIPAL
+       ========================================================== -->
+  <main id="contenido-principal">
+
+    <!-- BREADCRUMB: Inicio > Blogs > Artículo -->
+    <nav class="breadcrumb" aria-label="Ruta de navegación">
+      <div class="contenedor">
+        <ol class="breadcrumb__lista">
+          <li class="breadcrumb__item">
+            <a class="breadcrumb__enlace" href="index.html">Inicio</a>
+          </li>
+          <li class="breadcrumb__item">
+            <a class="breadcrumb__enlace" href="blogs.html">Blogs</a>
+          </li>
+          <li class="breadcrumb__item breadcrumb__item--actual" aria-current="page">
+            La Generación IV
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ==========================================================
+         ARTÍCULO
+         ========================================================== -->
+    <article class="articulo">
+
+      <header class="articulo__header">
+        <div class="contenedor contenedor--estrecho">
+
+          <p class="articulo__categoria">Historia</p>
+
+          <h1 class="articulo__titulo">
+            Cómo la Generación IV marcó un antes y un después en Pokémon
+          </h1>
+
+          <p class="articulo__meta">
+            <time datetime="2025-02-28">28 de febrero, 2025</time>
+            <span class="articulo__separador" aria-hidden="true">·</span>
+            <span>7 min de lectura</span>
+            <span class="articulo__separador" aria-hidden="true">·</span>
+            <span>Por <strong>Gabriel Flores</strong></span>
+          </p>
+
+        </div>
+      </header>
+
+      <figure class="articulo__portada">
+        <div class="contenedor contenedor--estrecho">
+          <img class="articulo__portada-imagen"
+               src="assets/img/blog-gen4-historia.webp"
+               alt="Consola Nintendo DS con la carátula de Pokémon Pearl Version sobre fondo púrpura"
+               width="1200" height="675" loading="eager" decoding="async">
+          <figcaption class="articulo__portada-pie">
+            La llegada de Nintendo DS transformó la forma de jugar Pokémon.
+          </figcaption>
+        </div>
+      </figure>
+
+      <div class="articulo__cuerpo">
+        <div class="contenedor contenedor--estrecho">
+
+          <p class="articulo__entradilla">
+            <strong>2006</strong> fue un año bisagra para la saga. Con la llegada de
+            <em>Pokémon Diamond</em> y <em>Pokémon Pearl</em> a Nintendo DS, la franquicia
+            no solo cambió de consola: cambió su forma de entender la conexión entre
+            jugadores.
+          </p>
+
+          <h2>Una nueva región: Sinnoh</h2>
+          <p>
+            Sinnoh se inspiró en la isla japonesa de <strong>Hokkaido</strong>, y fue la
+            primera región en incorporar un <em>Monte Coronet</em> como eje geográfico
+            central. Su diseño introdujo una estructura vertical inédita: los jugadores
+            tenían que atravesar la región de norte a sur, atravesando nieve, cuevas y
+            lagos legendarios.
+          </p>
+
+          <h2>La conexión online cambió todo</h2>
+          <p>
+            La característica estrella de la Generación IV fue la <strong>Nintendo Wi-Fi
+            Connection</strong>. Por primera vez en la saga principal, era posible
+            intercambiar Pokémon y combatir con jugadores de todo el mundo sin cables
+            ni adaptadores.
+          </p>
+          <p>
+            Esto no solo transformó la experiencia de juego: sentó las bases de lo que
+            hoy conocemos como la escena competitiva moderna de Pokémon.
+          </p>
+
+          <h2>Pantalla táctil y reloj Pokétch</h2>
+          <p>
+            La doble pantalla de la DS permitió introducir el <strong>Pokétch</strong>,
+            un reloj multifunción que ofrecía mapas, contador de pasos, calculadora
+            y hasta un medidor de felicidad para los Pokémon del equipo.
+          </p>
+          <p>
+            Fue una de las primeras veces que la saga integró verdaderamente las
+            capacidades del hardware en la jugabilidad cotidiana, en lugar de
+            solo utilizarlas como un extra.
+          </p>
+
+          <blockquote class="articulo__cita">
+            <p>
+              "La Generación IV no inventó Pokémon, pero le dio su primera
+              dimensión verdaderamente global."
+            </p>
+            <cite>— Equipo PokéTienda Pearl</cite>
+          </blockquote>
+
+          <h2>El legado</h2>
+          <p>
+            Muchos consideran a Diamond y Pearl el punto más alto de la saga principal.
+            Introdujeron 107 nuevos Pokémon, la separación física/especial de movimientos
+            y el sistema de combates que hoy seguimos usando.
+          </p>
+          <p>
+            En PokéTienda Pearl celebramos esa generación no solo vendiendo productos:
+            manteniendo viva la memoria de quienes crecimos persiguiendo a Palkia y Dialga.
+          </p>
+
+        </div>
+      </div>
+
+      <!-- Autor -->
+      <aside class="articulo__autor" aria-labelledby="autor-titulo">
+        <div class="contenedor contenedor--estrecho">
+          <h2 class="visually-hidden" id="autor-titulo">Sobre el autor</h2>
+
+          <div class="autor">
+            <figure class="autor__foto">
+              <img src="assets/img/equipo-gabriel.webp"
+                   alt="Retrato ilustrado de Gabriel Flores"
+                   width="80" height="80" loading="lazy" decoding="async">
+            </figure>
+            <div class="autor__info">
+              <p class="autor__nombre">Gabriel Flores</p>
+              <p class="autor__rol">Desarrollador Fullstack de PokéTienda Pearl</p>
+              <p class="autor__bio">
+                Encargado de la arquitectura HTML y la lógica de negocio del proyecto.
+                Fan de la Generación IV desde que jugó su primera partida en DS.
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Navegación entre artículos -->
+      <nav class="articulo__nav" aria-label="Navegación entre artículos del blog">
+        <div class="contenedor contenedor--estrecho">
+          <ul class="articulo__nav-lista">
+            <li class="articulo__nav-item articulo__nav-item--anterior">
+              <span class="articulo__nav-label">Artículo anterior</span>
+              <a class="articulo__nav-enlace" href="detalle-blog-1.html">
+                El misterio de las perlas en la mitología de Sinnoh
+              </a>
+            </li>
+            <li class="articulo__nav-item articulo__nav-item--siguiente">
+              <span class="articulo__nav-label">Siguiente artículo</span>
+              <span class="articulo__nav-texto">No hay más artículos</span>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+    </article>
+
+    <section class="articulo__volver" aria-labelledby="volver-titulo">
+      <div class="contenedor contenedor--estrecho">
+        <h2 class="visually-hidden" id="volver-titulo">Volver al listado</h2>
+        <a class="boton boton--secundario" href="blogs.html">← Volver al blog</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="site-footer">
+    <div class="contenedor site-footer__inner">
+
+      <div class="site-footer__columna site-footer__marca">
+        <a href="index.html" class="logo logo--footer" aria-label="PokéTienda Pearl — Ir al inicio">
+          <svg class="logo__icono" width="32" height="32" viewBox="0 0 100 100" role="img" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="pearlGradFooter" cx="30%" cy="30%" r="70%">
+                <stop offset="0%"   stop-color="#FFFFFF"/>
+                <stop offset="50%"  stop-color="#D63384"/>
+                <stop offset="100%" stop-color="#4A148C"/>
+              </radialGradient>
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="url(#pearlGradFooter)" stroke="#FFC107" stroke-width="3"/>
+            <ellipse cx="35" cy="35" rx="10" ry="6" fill="#FFFFFF" opacity="0.6"/>
+          </svg>
+          <span class="logo__texto">PokéTienda&nbsp;Pearl</span>
+        </a>
+        <p class="site-footer__eslogan">"Atrapa lo legendario"</p>
+        <p class="site-footer__texto">
+          Tienda online temática inspirada en la Generación IV.
+          Para coleccionistas de Sinnoh.
+        </p>
+      </div>
+
+      <nav class="site-footer__columna" aria-labelledby="footer-nav-titulo">
+        <h2 class="site-footer__titulo" id="footer-nav-titulo">Navegación</h2>
+        <ul class="site-footer__lista">
+          <li><a class="site-footer__enlace" href="index.html">Inicio</a></li>
+          <li><a class="site-footer__enlace" href="productos.html">Productos</a></li>
+          <li><a class="site-footer__enlace" href="nosotros.html">Nosotros</a></li>
+          <li><a class="site-footer__enlace" href="blogs.html">Blogs</a></li>
+          <li><a class="site-footer__enlace" href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <nav class="site-footer__columna" aria-labelledby="footer-ayuda-titulo">
+        <h2 class="site-footer__titulo" id="footer-ayuda-titulo">Ayuda</h2>
+        <ul class="site-footer__lista">
+          <li><a class="site-footer__enlace" href="registro.html">Crear cuenta</a></li>
+          <li><a class="site-footer__enlace" href="login.html">Iniciar sesión</a></li>
+          <li><a class="site-footer__enlace" href="carrito.html">Mi carrito</a></li>
+          <li><a class="site-footer__enlace" href="contacto.html">Preguntas frecuentes</a></li>
+        </ul>
+      </nav>
+
+      <section class="site-footer__columna" aria-labelledby="footer-contacto-titulo">
+        <h2 class="site-footer__titulo" id="footer-contacto-titulo">Contacto</h2>
+        <address class="site-footer__direccion">
+          <ul class="site-footer__lista">
+            <li><a class="site-footer__enlace" href="mailto:contacto@poketiendapearl.cl">contacto@poketiendapearl.cl</a></li>
+            <li><a class="site-footer__enlace" href="tel:+56223456789">+56 2 2345 6789</a></li>
+            <li>Av. Sinnoh 1420, Santiago, Chile</li>
+          </ul>
+        </address>
+
+        <ul class="redes" aria-label="Redes sociales">
+          <li><a class="redes__enlace" href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+          <li><a class="redes__enlace" href="https://x.com/" target="_blank" rel="noopener noreferrer">X<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+          <li><a class="redes__enlace" href="https://discord.com/" target="_blank" rel="noopener noreferrer">Discord<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+        </ul>
+      </section>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <div class="contenedor site-footer__bottom-inner">
+        <p class="site-footer__copy">
+          &copy; 2025 PokéTienda Pearl. Proyecto académico DSY1104 — Todos los derechos reservados.
+        </p>
+        <p class="site-footer__version">Identidad visual v2.0</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/productos.js" defer></script>
+  <script src="assets/js/carrito.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+
+</body>
+</html>
