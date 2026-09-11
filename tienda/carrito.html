@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Revisa los productos de tu carrito en PokéTienda Pearl, aplica cupones de descuento y finaliza tu compra.">
+  <meta name="author" content="Equipo DSY1104">
+  <meta name="theme-color" content="#1A052A">
+
+  <title>Mi carrito | PokéTienda Pearl</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon-perla.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Inter:wght@400;600&family=Fredoka+One&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+  <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+
+  <!-- ==========================================================
+       HEADER (idéntico al resto del sitio)
+       ========================================================== -->
+  <header class="site-header">
+    <div class="contenedor site-header__inner">
+
+      <a href="index.html" class="logo" aria-label="PokéTienda Pearl — Ir al inicio">
+        <svg class="logo__icono" width="40" height="40" viewBox="0 0 100 100" role="img" aria-hidden="true" focusable="false">
+          <defs>
+            <radialGradient id="pearlGrad" cx="30%" cy="30%" r="70%">
+              <stop offset="0%"   stop-color="#FFFFFF"/>
+              <stop offset="50%"  stop-color="#D63384"/>
+              <stop offset="100%" stop-color="#4A148C"/>
+            </radialGradient>
+          </defs>
+          <circle cx="50" cy="50" r="45" fill="url(#pearlGrad)" stroke="#FFC107" stroke-width="3"/>
+          <ellipse cx="35" cy="35" rx="10" ry="6" fill="#FFFFFF" opacity="0.6"/>
+        </svg>
+        <span class="logo__texto">PokéTienda&nbsp;Pearl</span>
+      </a>
+
+      <button type="button"
+              class="nav-toggle"
+              id="nav-toggle"
+              aria-expanded="false"
+              aria-controls="nav-principal"
+              aria-label="Abrir menú de navegación">
+        <span class="nav-toggle__barra" aria-hidden="true"></span>
+        <span class="nav-toggle__barra" aria-hidden="true"></span>
+        <span class="nav-toggle__barra" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav" id="nav-principal" aria-label="Navegación principal">
+        <ul class="nav__lista">
+          <li class="nav__item"><a class="nav__enlace" href="index.html">Inicio</a></li>
+          <li class="nav__item"><a class="nav__enlace" href="productos.html">Productos</a></li>
+          <li class="nav__item"><a class="nav__enlace" href="nosotros.html">Nosotros</a></li>
+          <li class="nav__item"><a class="nav__enlace" href="blogs.html">Blogs</a></li>
+          <li class="nav__item"><a class="nav__enlace" href="contacto.html">Contacto</a></li>
+          <li class="nav__item"><a class="nav__enlace nav__enlace--destacado" href="login.html">Iniciar sesión</a></li>
+        </ul>
+      </nav>
+
+      <a href="carrito.html" class="carrito carrito--activo" id="carrito" aria-label="Carrito de compras: 3 productos" aria-current="page">
+        <svg class="carrito__icono" width="26" height="26" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round"
+             role="img" aria-hidden="true" focusable="false">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="carrito__badge" id="carrito-contador" role="status" aria-live="polite">3</span>
+      </a>
+
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       CONTENIDO PRINCIPAL
+       ========================================================== -->
+  <main id="contenido-principal">
+
+    <!-- BREADCRUMB -->
+    <nav class="breadcrumb" aria-label="Ruta de navegación">
+      <div class="contenedor">
+        <ol class="breadcrumb__lista">
+          <li class="breadcrumb__item">
+            <a class="breadcrumb__enlace" href="index.html">Inicio</a>
+          </li>
+          <li class="breadcrumb__item breadcrumb__item--actual" aria-current="page">
+            Carrito
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ==========================================================
+         VISTA DEL CARRITO
+         Estructura y clases provistas por el CSS dev
+         ========================================================== -->
+    <section class="carrito-view" aria-labelledby="carrito-titulo">
+      <div class="contenedor">
+
+        <header class="carrito-view__cabecera">
+          <h1 class="carrito-view__titulo" id="carrito-titulo">Mi carrito de compras</h1>
+          <p class="carrito-view__subtitulo">
+            Tienes <strong id="carrito-cantidad-total">3 productos</strong> en tu carrito.
+          </p>
+        </header>
+
+        <div class="carrito-view__layout">
+
+          <!-- ============ LISTA DE ÍTEMS ============ -->
+          <div class="carrito-items" id="carrito-items" aria-live="polite">
+
+            <!-- ==========================================================
+                 ITEM 1 · Figura Palkia Legendaria
+                 ========================================================== -->
+            <article class="carrito-item" data-id="P001" data-precio="24990" data-nombre="Figura Palkia Legendaria">
+
+              <a class="carrito-item__enlace"
+                 href="detalle-producto.html?id=P001"
+                 aria-label="Ver detalle de Figura Palkia Legendaria">
+                <img class="carrito-item__imagen"
+                     src="assets/img/producto-palkia.webp"
+                     alt="Figura coleccionable de Palkia en posición de ataque con acabado nacarado"
+                     width="120" height="120" loading="lazy" decoding="async">
+              </a>
+
+              <div class="carrito-item__info">
+                <span class="carrito-item__categoria">Figuras · Edición Perla</span>
+
+                <h3 class="carrito-item__nombre">
+                  <a class="carrito-item__nombre-enlace" href="detalle-producto.html?id=P001">
+                    Figura Palkia Legendaria
+                  </a>
+                </h3>
+
+                <p class="carrito-item__desc">
+                  Figura de PVC de 20 cm con base decorativa y aura púrpura.
+                  Acabado nacarado con degradado de blanco a magenta. Incluye caja edición Perla.
+                </p>
+
+                <ul class="carrito-item__detalles">
+                  <li>
+                    <span class="carrito-item__detalle-label">SKU:</span>
+                    <code class="carrito-item__sku">P001</code>
+                  </li>
+                  <li>
+                    <span class="carrito-item__detalle-label">Estado:</span>
+                    <span class="badge badge--exito">Disponible</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="carrito-item__acciones">
+
+                <div class="carrito-item__precios">
+                  <span class="carrito-item__precio-unitario">
+                    $24.990 <small class="carrito-item__precio-unidad">c/u</small>
+                  </span>
+                  <span class="carrito-item__subtotal precio" data-id="P001">$24.990</span>
+                </div>
+
+                <div class="selector-cantidad" role="group" aria-label="Cantidad de Figura Palkia Legendaria">
+                  <button class="selector-cantidad__btn"
+                          type="button"
+                          data-accion="restar"
+                          data-id="P001"
+                          aria-label="Disminuir cantidad de Figura Palkia Legendaria">−</button>
+
+                  <span class="selector-cantidad__valor" data-id="P001" aria-live="polite">1</span>
+
+                  <button class="selector-cantidad__btn"
+                          type="button"
+                          data-accion="sumar"
+                          data-id="P001"
+                          aria-label="Aumentar cantidad de Figura Palkia Legendaria">+</button>
+                </div>
+
+                <button class="carrito-item__quitar"
+                        type="button"
+                        data-accion="eliminar"
+                        data-id="P001"
+                        aria-label="Quitar Figura Palkia Legendaria del carrito">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       role="img" aria-hidden="true" focusable="false">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+                    <path d="M10 11v6"></path>
+                    <path d="M14 11v6"></path>
+                    <path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                  <span>Quitar</span>
+                </button>
+
+              </div>
+
+            </article>
+
+            <!-- ==========================================================
+                 ITEM 2 · Set de Cartas Sinnoh
+                 ========================================================== -->
+            <article class="carrito-item" data-id="P003" data-precio="8990" data-nombre="Set de Cartas Sinnoh">
+
+              <a class="carrito-item__enlace"
+                 href="detalle-producto.html?id=P003"
+                 aria-label="Ver detalle de Set de Cartas Sinnoh">
+                <img class="carrito-item__imagen"
+                     src="assets/img/producto-cartas.webp"
+                     alt="Set de cartas coleccionables de la región de Sinnoh con sobre sellado"
+                     width="120" height="120" loading="lazy" decoding="async">
+              </a>
+
+              <div class="carrito-item__info">
+                <span class="carrito-item__categoria">Cartas · TCG</span>
+
+                <h3 class="carrito-item__nombre">
+                  <a class="carrito-item__nombre-enlace" href="detalle-producto.html?id=P003">
+                    Set de Cartas Sinnoh
+                  </a>
+                </h3>
+
+                <p class="carrito-item__desc">
+                  Sobre sellado con 60 cartas de la región de Sinnoh. Incluye 3 cartas
+                  holográficas y 1 carta promo de Palkia. Edición Generación IV.
+                </p>
+
+                <ul class="carrito-item__detalles">
+                  <li>
+                    <span class="carrito-item__detalle-label">SKU:</span>
+                    <code class="carrito-item__sku">P003</code>
+                  </li>
+                  <li>
+                    <span class="carrito-item__detalle-label">Estado:</span>
+                    <span class="badge badge--advertencia">Últimas unidades</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="carrito-item__acciones">
+
+                <div class="carrito-item__precios">
+                  <span class="carrito-item__precio-unitario">
+                    $8.990 <small class="carrito-item__precio-unidad">c/u</small>
+                  </span>
+                  <span class="carrito-item__subtotal precio" data-id="P003">$8.990</span>
+                </div>
+
+                <div class="selector-cantidad" role="group" aria-label="Cantidad de Set de Cartas Sinnoh">
+                  <button class="selector-cantidad__btn"
+                          type="button"
+                          data-accion="restar"
+                          data-id="P003"
+                          aria-label="Disminuir cantidad de Set de Cartas Sinnoh">−</button>
+
+                  <span class="selector-cantidad__valor" data-id="P003" aria-live="polite">1</span>
+
+                  <button class="selector-cantidad__btn"
+                          type="button"
+                          data-accion="sumar"
+                          data-id="P003"
+                          aria-label="Aumentar cantidad de Set de Cartas Sinnoh">+</button>
+                </div>
+
+                <button class="carrito-item__quitar"
+                        type="button"
+                        data-accion="eliminar"
+                        data-id="P003"
+                        aria-label="Quitar Set de Cartas Sinnoh del carrito">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       role="img" aria-hidden="true" focusable="false">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+                    <path d="M10 11v6"></path>
+                    <path d="M14 11v6"></path>
+                    <path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                  <span>Quitar</span>
+                </button>
+
+              </div>
+
+            </article>
+
+            <!-- ==========================================================
+                 ITEM 3 · Estuche Poké Ball Pearl
+                 ========================================================== -->
+            <article class="carrito-item" data-id="P006" data-precio="7990" data-nombre="Estuche Poké Ball Pearl">
+
+              <a class="carrito-item__enlace"
+                 href="detalle-producto.html?id=P006"
+                 aria-label="Ver detalle de Estuche Poké Ball Pearl">
+                <img class="carrito-item__imagen"
+                     src="assets/img/producto-estuche.webp"
+                     alt="Estuche rígido con diseño de Poké Ball en tonos perla"
+                     width="120" height="120" loading="lazy" decoding="async">
+              </a>
+
+              <div class="carrito-item__info">
+                <span class="carrito-item__categoria">Accesorios · Colección</span>
+
+                <h3 class="carrito-item__nombre">
+                  <a class="carrito-item__nombre-enlace" href="detalle-producto.html?id=P006">
+                    Estuche Poké Ball Pearl
+                  </a>
+                </h3>
+
+                <p class="carrito-item__desc">
+                  Estuche rígido con cierre magnético y forro interior. Diseño Poké Ball
+                  en tonos perla con detalles en magenta y amarillo. Capacidad para 12 cartas.
+                </p>
+
+                <ul class="carrito-item__detalles">
+                  <li>
+                    <span class="carrito-item__detalle-label">SKU:</span>
+                    <code class="carrito-item__sku">P006</code>
+                  </li>
+                  <li>
+                    <span class="carrito-item__detalle-label">Estado:</span>
+                    <span class="badge badge--exito">Disponible</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="carrito-item__acciones">
+
+                <div class="carrito-item__precios">
+                  <span class="carrito-item__precio-unitario">
+                    $7.990 <small class="carrito-item__precio-unidad">c/u</small>
+                  </span>
+                  <span class="carrito-item__subtotal precio" data-id="P006">$7.990</span>
+                </div>
+
+                <div class="selector-cantidad" role="group" aria-label="Cantidad de Estuche Poké Ball Pearl">
+                  <button class="selector-cantidad__btn"
+                          type="button"
+                          data-accion="restar"
+                          data-id="P006"
+                          aria-label="Disminuir cantidad de Estuche Poké Ball Pearl">−</button>
+
+                  <span class="selector-cantidad__valor" data-id="P006" aria-live="polite">1</span>
+
+                  <button class="selector-cantidad__btn"
+                          type="button"
+                          data-accion="sumar"
+                          data-id="P006"
+                          aria-label="Aumentar cantidad de Estuche Poké Ball Pearl">+</button>
+                </div>
+
+                <button class="carrito-item__quitar"
+                        type="button"
+                        data-accion="eliminar"
+                        data-id="P006"
+                        aria-label="Quitar Estuche Poké Ball Pearl del carrito">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       role="img" aria-hidden="true" focusable="false">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+                    <path d="M10 11v6"></path>
+                    <path d="M14 11v6"></path>
+                    <path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                  <span>Quitar</span>
+                </button>
+
+              </div>
+
+            </article>
+
+          </div>
+          <!-- /#carrito-items -->
+
+          <!-- ============ ESTADO VACÍO ============ -->
+          <div class="carrito-vacio" id="carrito-vacio" hidden>
+            <svg class="carrito-vacio__icono" width="80" height="80" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round"
+                 role="img" aria-hidden="true" focusable="false">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+
+            <h2 class="carrito-vacio__titulo">Tu carrito está vacío</h2>
+            <p class="carrito-vacio__texto">
+              Aún no has añadido productos. Explora nuestra colección y atrapa lo legendario.
+            </p>
+
+            <a href="productos.html" class="boton boton--primario">Explorar productos</a>
+          </div>
+
+          <!-- Acciones al pie del listado -->
+          <div class="carrito-items__acciones">
+            <a class="carrito-items__volver" href="productos.html">
+              ← Seguir comprando
+            </a>
+
+            <button class="carrito-items__vaciar"
+                    type="button"
+                    id="btn-vaciar-carrito">
+              Vaciar carrito
+            </button>
+          </div>
+
+          <!-- ============ RESUMEN LATERAL ============ -->
+          <aside class="carrito-resumen" aria-labelledby="resumen-titulo">
+
+            <h2 class="carrito-resumen__titulo" id="resumen-titulo">Resumen de compra</h2>
+
+            <!-- Cupón -->
+            <form class="carrito-resumen__cupon" id="form-cupon" novalidate>
+              <label class="visually-hidden" for="cupon">Cupón de descuento</label>
+
+              <div class="carrito-resumen__cupon-grupo">
+                <input class="campo__input"
+                       type="text"
+                       id="cupon"
+                       name="cupon"
+                       placeholder="Cupón de descuento"
+                       maxlength="20"
+                       autocomplete="off"
+                       aria-describedby="cupon-ayuda cupon-error">
+
+                <button class="boton boton--secundario boton--sm"
+                        type="submit"
+                        id="btn-aplicar-cupon">
+                  Aplicar
+                </button>
+              </div>
+
+              <p class="campo__ayuda" id="cupon-ayuda">
+                Prueba con <strong>PEARL10</strong> (10 % de descuento).
+              </p>
+              <p class="campo__error" id="cupon-error" role="alert" hidden></p>
+
+              <div class="carrito-resumen__cupon-aplicado" id="cupon-aplicado" hidden>
+                <span class="carrito-resumen__cupon-texto">
+                  Cupón <strong id="cupon-aplicado-codigo">—</strong> aplicado
+                </span>
+                <button type="button"
+                        class="carrito-resumen__cupon-quitar"
+                        id="btn-quitar-cupon"
+                        aria-label="Quitar cupón aplicado">×</button>
+              </div>
+            </form>
+
+            <!-- Totales -->
+            <dl class="carrito-resumen__totales">
+
+              <div class="carrito-resumen__fila">
+                <dt class="carrito-resumen__label">Subtotal</dt>
+                <dd class="carrito-resumen__valor" id="carrito-subtotal">$41.970</dd>
+              </div>
+
+              <div class="carrito-resumen__fila" id="fila-descuento" hidden>
+                <dt class="carrito-resumen__label">
+                  Descuento <span class="carrito-resumen__pct" id="carrito-descuento-pct">(0 %)</span>
+                </dt>
+                <dd class="carrito-resumen__valor carrito-resumen__valor--descuento" id="carrito-descuento">−$0</dd>
+              </div>
+
+              <div class="carrito-resumen__fila">
+                <dt class="carrito-resumen__label">Envío</dt>
+                <dd class="carrito-resumen__valor" id="carrito-envio">Por calcular</dd>
+              </div>
+
+            </dl>
+
+            <div class="carrito-resumen__total">
+              <span>TOTAL:</span>
+              <span class="precio" id="carrito-total">$41.970</span>
+            </div>
+
+            <p class="carrito-resumen__nota">
+              <span aria-hidden="true">✦</span>
+              Envío gratis desde $50.000
+            </p>
+
+            <button class="boton boton--exito boton--bloque carrito-resumen__pagar"
+                    type="button"
+                    id="btn-pagar"
+                    aria-describedby="pagar-ayuda">
+              Pagar
+            </button>
+
+            <p class="carrito-resumen__pagar-ayuda" id="pagar-ayuda">
+              Serás redirigido a la pasarela de pago segura.
+            </p>
+
+            <p class="formulario__feedback" id="carrito-feedback" role="status" aria-live="polite" hidden></p>
+
+            <ul class="carrito-resumen__sellos" aria-label="Garantías de compra">
+              <li class="carrito-resumen__sello">
+                <span class="carrito-resumen__sello-icono" aria-hidden="true">✦</span>
+                <span>Pago 100 % seguro</span>
+              </li>
+              <li class="carrito-resumen__sello">
+                <span class="carrito-resumen__sello-icono" aria-hidden="true">✦</span>
+                <span>Despacho en 48 h hábiles</span>
+              </li>
+              <li class="carrito-resumen__sello">
+                <span class="carrito-resumen__sello-icono" aria-hidden="true">✦</span>
+                <span>Cambios sin costo dentro de 30 días</span>
+              </li>
+            </ul>
+
+          </aside>
+          <!-- /.carrito-resumen -->
+
+        </div>
+        <!-- /.carrito-view__layout -->
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         PRODUCTOS SUGERIDOS
+         ========================================================== -->
+    <section class="relacionados relacionados--sugeridos" aria-labelledby="sugeridos-titulo">
+      <div class="contenedor">
+
+        <header class="seccion__cabecera">
+          <h2 class="seccion__titulo" id="sugeridos-titulo">También te puede interesar</h2>
+          <p class="seccion__subtitulo">Completa tu colección antes de finalizar la compra.</p>
+        </header>
+
+        <div class="grid-productos grid-productos--relacionados" id="lista-sugeridos" aria-live="polite">
+
+          <article class="card-producto" data-id="P004">
+            <a class="card-producto__enlace" href="detalle-producto.html?id=P004" aria-label="Ver detalle de Consola Edición Perla">
+              <img class="card-producto__imagen"
+                   src="assets/img/producto-consola.webp"
+                   alt="Consola portátil edición Perla con detalles en magenta"
+                   width="300" height="300" loading="lazy" decoding="async">
+            </a>
+            <div class="card-producto__cuerpo">
+              <span class="card-producto__categoria">Consolas</span>
+              <h3 class="card-producto__nombre">
+                <a class="card-producto__enlace-texto" href="detalle-producto.html?id=P004">Consola Edición Perla</a>
+              </h3>
+              <p class="card-producto__precio precio">$89.990</p>
+              <button type="button" class="boton boton--primario card-producto__boton"
+                      data-accion="agregar" data-id="P004" data-nombre="Consola Edición Perla" data-precio="89990">
+                Añadir al carrito
+              </button>
+            </div>
+          </article>
+
+          <article class="card-producto" data-id="P005">
+            <a class="card-producto__enlace" href="detalle-producto.html?id=P005" aria-label="Ver detalle de Figura Dialga Temporal">
+              <img class="card-producto__imagen"
+                   src="assets/img/producto-dialga.webp"
+                   alt="Figura coleccionable de Dialga con acabado metálico"
+                   width="300" height="300" loading="lazy" decoding="async">
+            </a>
+            <div class="card-producto__cuerpo">
+              <span class="card-producto__categoria">Figuras</span>
+              <h3 class="card-producto__nombre">
+                <a class="card-producto__enlace-texto" href="detalle-producto.html?id=P005">Figura Dialga Temporal</a>
+              </h3>
+              <p class="card-producto__precio precio">$22.990</p>
+              <button type="button" class="boton boton--primario card-producto__boton"
+                      data-accion="agregar" data-id="P005" data-nombre="Figura Dialga Temporal" data-precio="22990">
+                Añadir al carrito
+              </button>
+            </div>
+          </article>
+
+          <article class="card-producto" data-id="P007">
+            <a class="card-producto__enlace" href="detalle-producto.html?id=P007" aria-label="Ver detalle de Álbum Coleccionista Sinnoh">
+              <img class="card-producto__imagen"
+                   src="assets/img/producto-album.webp"
+                   alt="Álbum de colección con portada ilustrada de Sinnoh"
+                   width="300" height="300" loading="lazy" decoding="async">
+            </a>
+            <div class="card-producto__cuerpo">
+              <span class="card-producto__categoria">Cartas</span>
+              <h3 class="card-producto__nombre">
+                <a class="card-producto__enlace-texto" href="detalle-producto.html?id=P007">Álbum Coleccionista Sinnoh</a>
+              </h3>
+              <p class="card-producto__precio precio">$14.990</p>
+              <button type="button" class="boton boton--primario card-producto__boton"
+                      data-accion="agregar" data-id="P007" data-nombre="Álbum Coleccionista Sinnoh" data-precio="14990">
+                Añadir al carrito
+              </button>
+            </div>
+          </article>
+
+          <article class="card-producto" data-id="P008">
+            <a class="card-producto__enlace" href="detalle-producto.html?id=P008" aria-label="Ver detalle de Lámpara Cósmica Giratina">
+              <img class="card-producto__imagen"
+                   src="assets/img/producto-lampara.webp"
+                   alt="Lámpara decorativa con silueta de Giratina y luz púrpura"
+                   width="300" height="300" loading="lazy" decoding="async">
+            </a>
+            <div class="card-producto__cuerpo">
+              <span class="card-producto__categoria">Decoración</span>
+              <h3 class="card-producto__nombre">
+                <a class="card-producto__enlace-texto" href="detalle-producto.html?id=P008">Lámpara Cósmica Giratina</a>
+              </h3>
+              <p class="card-producto__precio precio">$18.990</p>
+              <button type="button" class="boton boton--primario card-producto__boton"
+                      data-accion="agregar" data-id="P008" data-nombre="Lámpara Cósmica Giratina" data-precio="18990">
+                Añadir al carrito
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+        <noscript>
+          <p class="aviso aviso--info">
+            Activa JavaScript para ver las recomendaciones y gestionar tu carrito.
+          </p>
+        </noscript>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         BENEFICIOS DE COMPRA
+         ========================================================== -->
+    <section class="beneficios" aria-labelledby="beneficios-carrito-titulo">
+      <div class="contenedor">
+        <h2 class="visually-hidden" id="beneficios-carrito-titulo">Información de envío y pago</h2>
+
+        <ul class="beneficios__lista">
+          <li class="beneficio">
+            <span class="beneficio__icono" aria-hidden="true">✦</span>
+            <h3 class="beneficio__titulo">Envío gratis desde $50.000</h3>
+            <p class="beneficio__texto">Válido para todo Chile continental.</p>
+          </li>
+          <li class="beneficio">
+            <span class="beneficio__icono" aria-hidden="true">✦</span>
+            <h3 class="beneficio__titulo">Pago en cuotas sin interés</h3>
+            <p class="beneficio__texto">Con tarjetas de crédito participantes.</p>
+          </li>
+          <li class="beneficio">
+            <span class="beneficio__icono" aria-hidden="true">✦</span>
+            <h3 class="beneficio__titulo">Productos verificados</h3>
+            <p class="beneficio__texto">Cada artículo es revisado antes de su despacho.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       FOOTER (idéntico al resto del sitio)
+       ========================================================== -->
+  <footer class="site-footer">
+    <div class="contenedor site-footer__inner">
+
+      <div class="site-footer__columna site-footer__marca">
+        <a href="index.html" class="logo logo--footer" aria-label="PokéTienda Pearl — Ir al inicio">
+          <svg class="logo__icono" width="32" height="32" viewBox="0 0 100 100" role="img" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="pearlGradFooter" cx="30%" cy="30%" r="70%">
+                <stop offset="0%"   stop-color="#FFFFFF"/>
+                <stop offset="50%"  stop-color="#D63384"/>
+                <stop offset="100%" stop-color="#4A148C"/>
+              </radialGradient>
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="url(#pearlGradFooter)" stroke="#FFC107" stroke-width="3"/>
+            <ellipse cx="35" cy="35" rx="10" ry="6" fill="#FFFFFF" opacity="0.6"/>
+          </svg>
+          <span class="logo__texto">PokéTienda&nbsp;Pearl</span>
+        </a>
+        <p class="site-footer__eslogan">"Atrapa lo legendario"</p>
+        <p class="site-footer__texto">
+          Tienda online temática inspirada en la Generación IV.
+          Para coleccionistas de Sinnoh.
+        </p>
+      </div>
+
+      <nav class="site-footer__columna" aria-labelledby="footer-nav-titulo">
+        <h2 class="site-footer__titulo" id="footer-nav-titulo">Navegación</h2>
+        <ul class="site-footer__lista">
+          <li><a class="site-footer__enlace" href="index.html">Inicio</a></li>
+          <li><a class="site-footer__enlace" href="productos.html">Productos</a></li>
+          <li><a class="site-footer__enlace" href="nosotros.html">Nosotros</a></li>
+          <li><a class="site-footer__enlace" href="blogs.html">Blogs</a></li>
+          <li><a class="site-footer__enlace" href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <nav class="site-footer__columna" aria-labelledby="footer-ayuda-titulo">
+        <h2 class="site-footer__titulo" id="footer-ayuda-titulo">Ayuda</h2>
+        <ul class="site-footer__lista">
+          <li><a class="site-footer__enlace" href="registro.html">Crear cuenta</a></li>
+          <li><a class="site-footer__enlace" href="login.html">Iniciar sesión</a></li>
+          <li><a class="site-footer__enlace" href="carrito.html">Mi carrito</a></li>
+          <li><a class="site-footer__enlace" href="contacto.html">Preguntas frecuentes</a></li>
+        </ul>
+      </nav>
+
+      <section class="site-footer__columna" aria-labelledby="footer-contacto-titulo">
+        <h2 class="site-footer__titulo" id="footer-contacto-titulo">Contacto</h2>
+        <address class="site-footer__direccion">
+          <ul class="site-footer__lista">
+            <li><a class="site-footer__enlace" href="mailto:contacto@poketiendapearl.cl">contacto@poketiendapearl.cl</a></li>
+            <li><a class="site-footer__enlace" href="tel:+56223456789">+56 2 2345 6789</a></li>
+            <li>Av. Sinnoh 1420, Santiago, Chile</li>
+          </ul>
+        </address>
+
+        <ul class="redes" aria-label="Redes sociales">
+          <li><a class="redes__enlace" href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+          <li><a class="redes__enlace" href="https://x.com/" target="_blank" rel="noopener noreferrer">X<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+          <li><a class="redes__enlace" href="https://discord.com/" target="_blank" rel="noopener noreferrer">Discord<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+        </ul>
+      </section>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <div class="contenedor site-footer__bottom-inner">
+        <p class="site-footer__copy">
+          &copy; 2025 PokéTienda Pearl. Proyecto académico DSY1104 — Todos los derechos reservados.
+        </p>
+        <p class="site-footer__version">Identidad visual v2.0</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/productos.js" defer></script>
+  <script src="assets/js/carrito.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+
+</body>
+</html>
