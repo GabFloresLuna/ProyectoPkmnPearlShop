@@ -108,7 +108,40 @@
        CONTENIDO PRINCIPAL
        ========================================================== -->
   <main id="contenido-principal">
+      <section class="productos-view" aria-labelledby="productos-titulo">
+        <div class="contenedor">
 
+          <header class="productos-view__cabecera">
+            <h1 class="productos-view__titulo" id="productos-titulo">Productos</h1>
+            <p class="productos-view__subtitulo">Explora toda la colección Edición Perla.</p>
+          </header>
+
+          <div class="toolbar-productos" role="search">
+            <div class="toolbar-productos__grupo toolbar-productos__buscador">
+              <label class="visually-hidden" for="buscador">Buscar productos</label>
+              <svg aria-hidden="true"><!-- icono lupa --></svg>
+              <input class="campo__input" type="search" id="buscador" placeholder="Buscar por nombre…">
+            </div>
+            <div class="toolbar-productos__grupo">
+              <label class="campo__label" for="filtro-categoria">Categoría</label>
+              <select class="campo__select" id="filtro-categoria">
+                <option value="">Todas las categorías</option>
+              </select>
+            </div>
+            <div class="toolbar-productos__grupo">
+              <label class="campo__label" for="ordenar">Ordenar por</label>
+              <select class="campo__select" id="ordenar">
+                <option value="relevancia">Relevancia</option>
+              </select>
+            </div>
+          </div>
+          <p class="toolbar-productos__resultado" role="status" aria-live="polite">
+            Mostrando todos los productos disponibles.
+          </p>
+
+          <div class="grid-productos" id="lista-productos"><!-- cards --></div>
+        </div>
+      </section>
     <!-- ------------------------------------------------------
          BREADCRUMB / MIGA DE PAN
          ------------------------------------------------------ -->
