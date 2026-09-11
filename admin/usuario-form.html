@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Formulario de creación y edición de usuarios de PokéTienda Pearl.">
+  <meta name="author" content="Equipo DSY1104">
+  <meta name="theme-color" content="#1A052A">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Nuevo / Editar usuario | Admin PokéTienda Pearl</title>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon-perla.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Inter:wght@400;600&family=Fredoka+One&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+
+<body class="admin-body">
+
+  <a class="skip-link" href="#admin-contenido">Saltar al contenido principal</a>
+
+  <div class="admin-layout">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Menú de administración">
+
+      <a href="home.html" class="admin-sidebar__logo" aria-label="PokéTienda Pearl Admin — Ir al inicio">
+        <svg width="34" height="34" viewBox="0 0 100 100" role="img" aria-hidden="true" focusable="false">
+          <defs>
+            <radialGradient id="pearlGradAdmin" cx="30%" cy="30%" r="70%">
+              <stop offset="0%"   stop-color="#FFFFFF"/>
+              <stop offset="50%"  stop-color="#D63384"/>
+              <stop offset="100%" stop-color="#4A148C"/>
+            </radialGradient>
+          </defs>
+          <circle cx="50" cy="50" r="45" fill="url(#pearlGradAdmin)" stroke="#FFC107" stroke-width="3"/>
+          <ellipse cx="35" cy="35" rx="10" ry="6" fill="#FFFFFF" opacity="0.6"/>
+        </svg>
+        <span class="admin-sidebar__marca">Pearl <span>Admin</span></span>
+      </a>
+
+      <nav class="admin-nav" aria-label="Navegación del administrador">
+        <p class="admin-nav__grupo">Principal</p>
+        <ul class="admin-nav__lista">
+          <li>
+            <a class="admin-nav__enlace" href="home.html">
+              <svg class="admin-nav__icono" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                   role="img" aria-hidden="true" focusable="false">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              <span>Home</span>
+            </a>
+          </li>
+        </ul>
+
+        <p class="admin-nav__grupo">Mantenedores</p>
+        <ul class="admin-nav__lista">
+          <li>
+            <a class="admin-nav__enlace" href="productos.html">
+              <svg class="admin-nav__icono" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                   role="img" aria-hidden="true" focusable="false">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+              <span>Productos</span>
+            </a>
+          </li>
+          <li>
+            <a class="admin-nav__enlace admin-nav__enlace--activo" href="usuarios.html">
+              <svg class="admin-nav__icono" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                   role="img" aria-hidden="true" focusable="false">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+              <span>Usuarios</span>
+            </a>
+          </li>
+        </ul>
+
+        <p class="admin-nav__grupo">Sistema</p>
+        <ul class="admin-nav__lista">
+          <li>
+            <a class="admin-nav__enlace" href="../index.html">
+              <svg class="admin-nav__icono" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                   role="img" aria-hidden="true" focusable="false">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              <span>Ver tienda</span>
+            </a>
+          </li>
+          <li>
+            <a class="admin-nav__enlace admin-nav__enlace--peligro" href="../login.html">
+              <svg class="admin-nav__icono" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                   role="img" aria-hidden="true" focusable="false">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                <polyline points="16 17 21 12 16 7"/>
+                <line x1="21" y1="12" x2="9" y2="12"/>
+              </svg>
+              <span>Cerrar sesión</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    </aside>
+
+    <!-- ============ CONTENIDO ============ -->
+    <div class="admin-main">
+
+      <header class="admin-topbar">
+        <button type="button"
+                class="admin-topbar__toggle"
+                id="admin-sidebar-toggle"
+                aria-expanded="false"
+                aria-controls="admin-sidebar"
+                aria-label="Abrir menú lateral">
+          <span class="admin-topbar__toggle-barra" aria-hidden="true"></span>
+          <span class="admin-topbar__toggle-barra" aria-hidden="true"></span>
+          <span class="admin-topbar__toggle-barra" aria-hidden="true"></span>
+        </button>
+
+        <h1 class="admin-topbar__titulo" id="titulo-form-usuario">Nuevo usuario</h1>
+
+        <div class="admin-topbar__usuario">
+          <span class="admin-topbar__saludo">Hola, <strong>Administrador</strong></span>
+          <span class="admin-topbar__avatar" aria-hidden="true">A</span>
+        </div>
+      </header>
+
+      <main class="admin-contenido" id="admin-contenido">
+
+        <nav class="breadcrumb breadcrumb--admin" aria-label="Ruta de navegación">
+          <ol class="breadcrumb__lista">
+            <li class="breadcrumb__item"><a class="breadcrumb__enlace" href="home.html">Admin</a></li>
+            <li class="breadcrumb__item"><a class="breadcrumb__enlace" href="usuarios.html">Usuarios</a></li>
+            <li class="breadcrumb__item breadcrumb__item--actual" aria-current="page">
+              <span id="breadcrumb-accion">Nuevo usuario</span>
+            </li>
+          </ol>
+        </nav>
+
+        <header class="admin-seccion">
+          <div>
+            <h2 class="admin-seccion-titulo" id="form-titulo">Registro de usuario</h2>
+            <p class="admin-seccion-subtitulo">
+              Completa los campos. Los marcados con <span class="campo__requerido">*</span> son obligatorios.
+            </p>
+          </div>
+
+          <a class="boton boton--secundario" href="usuarios.html">← Volver al listado</a>
+        </header>
+
+        <!-- ==========================================================
+             FORMULARIO
+             data-modo="crear" (por defecto) o "editar" vía ?run=
+             ========================================================== -->
+        <form class="formulario formulario--admin" id="form-usuario" data-modo="crear" novalidate>
+
+          <div class="formulario__grid">
+
+            <!-- ---------- RUN ---------- -->
+            <div class="campo">
+              <label class="campo__label" for="run">
+                RUN <span class="campo__requerido" aria-hidden="true">*</span>
+              </label>
+              <input class="campo__input"
+                     type="text"
+                     id="run"
+                     name="run"
+                     placeholder="Ej: 19011022K"
+                     minlength="7"
+                     maxlength="9"
+                     autocomplete="off"
+                     required
+                     aria-required="true"
+                     aria-describedby="run-ayuda run-error">
+              <p class="campo__ayuda" id="run-ayuda">Sin puntos ni guion. Entre 7 y 9 caracteres.</p>
+              <p class="campo__error" id="run-error" role="alert" hidden></p>
+            </div>
+
+            <!-- ---------- Tipo de usuario ---------- -->
+            <div class="campo">
+              <label class="campo__label" for="tipo">
+                Tipo de usuario <span class="campo__requerido" aria-hidden="true">*</span>
+              </label>
+              <select class="campo__input campo__select"
+                      id="tipo"
+                      name="tipo"
+                      required
+                      aria-required="true"
+                      aria-describedby="tipo-error">
+                <option value="">Seleccione un rol…</option>
+                <option value="Administrador">Administrador</option>
+                <option value="Vendedor">Vendedor</option>
+                <option value="Cliente">Cliente</option>
+              </select>
+              <p class="campo__error" id="tipo-error" role="alert" hidden></p>
+            </div>
+
+            <!-- ---------- Nombre ---------- -->
+            <div class="campo">
+              <label class="campo__label" for="nombre">
+                Nombre <span class="campo__requerido" aria-hidden="true">*</span>
+              </label>
+              <input class="campo__input"
+                     type="text"
+                     id="nombre"
+                     name="nombre"
+                     placeholder="Ej: Gabriel"
+                     maxlength="50"
+                     autocomplete="given-name"
+                     required
+                     aria-required="true"
+                     aria-describedby="nombre-ayuda nombre-error">
+              <p class="campo__ayuda" id="nombre-ayuda">Máximo 50 caracteres.</p>
+              <p class="campo__error" id="nombre-error" role="alert" hidden></p>
+            </div>
+
+            <!-- ---------- Apellidos ---------- -->
+            <div class="campo">
+              <label class="campo__label" for="apellidos">
+                Apellidos <span class="campo__requerido" aria-hidden="true">*</span>
+              </label>
+              <input class="campo__input"
+                     type="text"
+                     id="apellidos"
+                     name="apellidos"
+                     placeholder="Ej: Flores Rojas"
+                     maxlength="100"
+                     autocomplete="family-name"
+                     required
+                     aria-required="true"
+                     aria-describedby="apellidos-ayuda apellidos-error">
+              <p class="campo__ayuda" id="apellidos-ayuda">Máximo 100 caracteres.</p>
+              <p class="campo__error" id="apellidos-error" role="alert" hidden></p>
+            </div>
+
+            <!-- ---------- Correo ---------- -->
+            <div class="campo">
+              <label class="campo__label" for="correo">
+                Correo electrónico <span class="campo__requerido" aria-hidden="true">*</span>
+              </label>
+              <input class="campo__input"
+                     type="email"
+                     id="correo"
+                     name="correo"
+                     placeholder="tucorreo@duoc.cl"
+                     maxlength="100"
+                     autocomplete="email"
+                     inputmode="email"
+                     required
+                     aria-required="true"
+                     aria-describedby="correo-ayuda correo-error">
+              <p class="campo__ayuda" id="correo-ayuda">
+                Dominios permitidos: <strong>@duoc.cl</strong>,
+                <strong>@profesor.duoc.cl</strong> y <strong>@gmail.com</strong>.
+              </p>
+              <p class="campo__error" id="correo-error" role="alert" hidden></p>
+            </div>
+
+            <!-- ---------- Fecha de nacimiento ---------- -->
+            <div class="campo">
+              <label class="campo__label" for="fecha-nacimiento">
+                Fecha de nacimiento <span class="campo__opcional">(opcional)</span>
+              </label>
+              <input class="campo__input"
+                     type="date"
+                     id="fecha-nacimiento"
+                     name="fecha-nacimiento"
+                     autocomplete="bday"
+                     aria-describedby="fecha-nacimiento-error">
+              <p class="campo__error" id="fecha-nacimiento-error" role="alert" hidden></p>
+            </div>
+
+            <!-- ---------- Región ---------- -->
+            <div class="campo">
+              <label class="campo__label" for="region">
+                Región <span class="campo__requerido" aria-hidden="true">*</span>
+              </label>
+              <select class="campo__input campo__select"
+                      id="region"
+                      name="region"
+                      required
+                      aria-required="true"
+                      aria-describedby="region-error">
+                <option value="">Seleccione una región…</option>
+                <!-- Opciones cargadas por regiones-comunas.js -->
+              </select>
+              <p class="campo__error" id="region-error" role="alert" hidden></p>
+            </div>
+
+            <!-- ---------- Comuna ---------- -->
+            <div class="campo">
+              <label class="campo__label" for="comuna">
+                Comuna <span class="campo__requerido" aria-hidden="true">*</span>
+              </label>
+              <select class="campo__input campo__select"
+                      id="comuna"
+                      name="comuna"
+                      required
+                      aria-required="true"
+                      disabled
+                      aria-describedby="comuna-ayuda comuna-error">
+                <option value="">Seleccione primero una región…</option>
+              </select>
+              <p class="campo__ayuda" id="comuna-ayuda">Se habilita al elegir una región.</p>
+              <p class="campo__error" id="comuna-error" role="alert" hidden></p>
+            </div>
+
+            <!-- ---------- Dirección ---------- -->
+            <div class="campo campo--ancho-completo">
+              <label class="campo__label" for="direccion">
+                Dirección <span class="campo__requerido" aria-hidden="true">*</span>
+              </label>
+              <input class="campo__input"
+                     type="text"
+                     id="direccion"
+                     name="direccion"
+                     placeholder="Ej: Av. Sinnoh 1420, Depto 302"
+                     maxlength="300"
+                     autocomplete="street-address"
+                     required
+                     aria-required="true"
+                     aria-describedby="direccion-ayuda direccion-error">
+              <p class="campo__ayuda" id="direccion-ayuda">Máximo 300 caracteres.</p>
+              <p class="campo__error" id="direccion-error" role="alert" hidden></p>
+            </div>
+
+          </div>
+          <!-- /.formulario__grid -->
+
+          <p class="formulario__nota">
+            Los campos marcados con <span class="campo__requerido" aria-hidden="true">*</span> son obligatorios.
+          </p>
+
+          <div class="formulario__acciones">
+            <a class="boton boton--secundario" href="usuarios.html">Cancelar</a>
+            <button type="submit" class="boton boton--primario" id="btn-guardar-usuario">
+              Guardar usuario
+            </button>
+          </div>
+
+          <p class="formulario__feedback" id="form-feedback" role="status" aria-live="polite" hidden></p>
+
+        </form>
+
+      </main>
+
+            <!-- ============ FOOTER ADMIN ============ -->
+      <footer class="admin-footer">
+        <div class="admin-footer__inner">
+          <p class="admin-footer__copy">
+            &copy; 2025 PokéTienda Pearl · Panel de administración · DSY1104
+          </p>
+          <nav class="admin-footer__nav" aria-label="Enlaces del pie de administración">
+            <a href="home.html">Panel</a>
+            <span aria-hidden="true">·</span>
+            <a href="../index.html">Tienda pública</a>
+            <span aria-hidden="true">·</span>
+            <a href="../login.html">Cerrar sesión</a>
+          </nav>
+        </div>
+      </footer>
+
+    </div>
+
+  </div>
+
+  <script src="../assets/js/regiones-comunas.js" defer></script>
+  <script src="../assets/js/admin.js" defer></script>
+  <script src="../assets/js/admin-usuario.js" defer></script>
+
+</body>
+</html>
