@@ -64,4 +64,6 @@
 
   /* --- Transiciones --- */
   --transicion: 200ms ease-in-out;
+
+  color-scheme: dark;
 }
