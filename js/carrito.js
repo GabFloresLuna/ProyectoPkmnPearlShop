@@ -1,20 +1,19 @@
 /**
- * carrito.js — PokéTienda Pearl (v3 — scope aislado)
+ * carrito.js — PokéTienda Pearl (v4 — totales siempre actualizados)
  *
- * Cambios de esta versión:
- *   - Envuelto en IIFE para evitar colisiones de const con productos.js.
- *   - API pública expuesta en window.carrito + alias sueltos por compatibilidad.
- *   - Log de arranque para verificar carga en consola.
- *   - Conserva todos los fixes B1-B6 de la versión anterior.
+ * Cambios respecto a v3:
+ *   - Los totales del resumen se actualizan SIEMPRE, incluso con
+ *     carrito vacío (antes un return temprano los dejaba hardcodeados).
+ *   - Un solo flujo: render de ítems condicional, totales incondicionales.
+ *   - Conserva IIFE, hooks BEM y API pública.
  *
  * Requiere en styles.css:  [hidden] { display: none !important; }
- * Requiere en carrito.html: todos los IDs listados en la sección DEPS.
  */
 (function () {
   'use strict';
 
   /* ============================================================
-     CONSTANTES (scope privado del IIFE)
+     CONSTANTES
      ============================================================ */
   const CLAVE_CARRITO = 'poketienda-carrito';
 
@@ -31,10 +30,10 @@
     P002: '../images/perlaCosmicaDecorativa.jpg',
     P003: '../images/setCartasSinnoh.jpeg',
     P004: '../images/consolaEdicionPerla.jpg',
-    P005: '../images/perlaCosmicaDecorativa.jpg',
-    P006: '../images/setCartasSinnoh.jpeg',
-    P007: '../images/figuraPalkiaLegendaria1.webp',
-    P008: '../images/perlaCosmicaDecorativa.jpg',
+    P005: '../images/estuchePokemonPearl.jpeg',
+    P006: '../images/albumColeccionistaSinnoh.webp',
+    P007: '../images/lamparaCosmicaGiratina.webp',
+    P008: '../images/figuraPalkiaTemporal1.jpg',
   };
 
   /* ============================================================
@@ -176,96 +175,97 @@
 
     const hayItems = items.length > 0;
 
+    /* --- 1. Visibilidad (depende de [hidden] en el CSS) --- */
     if (vacio)    vacio.hidden    = hayItems;
     if (cont)     cont.hidden     = !hayItems;
     if (acciones) acciones.hidden = !hayItems;
     if (resumen)  resumen.hidden  = !hayItems;
 
+    /* --- 2. Limpiar SIEMPRE el contenedor (borra los ítems hardcoded) --- */
     cont.innerHTML = '';
 
-    if (!hayItems) {
-      renderContadorHeader();
-      return;
+    /* --- 3. Renderizar ítems SOLO si hay --- */
+    if (hayItems) {
+      const frag = document.createDocumentFragment();
+      items.forEach((i) => {
+        const art = document.createElement('article');
+        art.className = 'carrito-item';
+        art.setAttribute('data-id', i.id);
+        art.setAttribute('data-precio', i.precio);
+        art.setAttribute('data-nombre', i.nombre);
+        art.innerHTML = `
+          <a class="carrito-item__enlace"
+             href="detalle-producto.html?id=${encodeURIComponent(i.id)}"
+             aria-label="Ver detalle de ${escapar(i.nombre)}">
+            <img class="carrito-item__imagen"
+                 src="${escapar(imagenProducto(i.id))}"
+                 alt="${escapar(i.nombre)}"
+                 width="120" height="120"
+                 loading="lazy" decoding="async"
+                 onerror="this.onerror=null; this.src='${IMG_FALLBACK}';">
+          </a>
+
+          <div class="carrito-item__info">
+            <span class="carrito-item__categoria">PokéTienda Pearl</span>
+            <h3 class="carrito-item__nombre">
+              <a class="carrito-item__nombre-enlace"
+                 href="detalle-producto.html?id=${encodeURIComponent(i.id)}">
+                ${escapar(i.nombre)}
+              </a>
+            </h3>
+            <ul class="carrito-item__detalles">
+              <li>
+                <span class="carrito-item__detalle-label">SKU:</span>
+                <code class="carrito-item__sku">${i.id}</code>
+              </li>
+              <li>
+                <span class="carrito-item__detalle-label">Estado:</span>
+                <span class="badge badge--exito">Disponible</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="carrito-item__acciones">
+            <div class="carrito-item__precios">
+              <span class="carrito-item__precio-unitario">
+                ${fmtCLP(i.precio)} <small class="carrito-item__precio-unidad">c/u</small>
+              </span>
+              <span class="carrito-item__subtotal precio" data-id="${i.id}">
+                ${fmtCLP(i.precio * i.cantidad)}
+              </span>
+            </div>
+
+            <div class="selector-cantidad" role="group" aria-label="Cantidad de ${escapar(i.nombre)}">
+              <button class="selector-cantidad__btn" type="button"
+                      data-accion="restar" data-id="${i.id}"
+                      aria-label="Disminuir cantidad de ${escapar(i.nombre)}">−</button>
+              <span class="selector-cantidad__valor" data-id="${i.id}" aria-live="polite">${i.cantidad}</span>
+              <button class="selector-cantidad__btn" type="button"
+                      data-accion="sumar" data-id="${i.id}"
+                      aria-label="Aumentar cantidad de ${escapar(i.nombre)}">+</button>
+            </div>
+
+            <button class="carrito-item__quitar" type="button"
+                    data-accion="eliminar" data-id="${i.id}"
+                    aria-label="Quitar ${escapar(i.nombre)} del carrito">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                   role="img" aria-hidden="true" focusable="false">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+                <path d="M10 11v6"></path>
+                <path d="M14 11v6"></path>
+                <path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
+              </svg>
+              <span>Quitar</span>
+            </button>
+          </div>`;
+        frag.appendChild(art);
+      });
+      cont.appendChild(frag);
     }
 
-    const frag = document.createDocumentFragment();
-    items.forEach((i) => {
-      const art = document.createElement('article');
-      art.className = 'carrito-item';
-      art.setAttribute('data-id', i.id);
-      art.setAttribute('data-precio', i.precio);
-      art.setAttribute('data-nombre', i.nombre);
-      art.innerHTML = `
-        <a class="carrito-item__enlace"
-           href="detalle-producto.html?id=${encodeURIComponent(i.id)}"
-           aria-label="Ver detalle de ${escapar(i.nombre)}">
-          <img class="carrito-item__imagen"
-               src="${escapar(imagenProducto(i.id))}"
-               alt="${escapar(i.nombre)}"
-               width="120" height="120"
-               loading="lazy" decoding="async"
-               onerror="this.onerror=null; this.src='${IMG_FALLBACK}';">
-        </a>
-
-        <div class="carrito-item__info">
-          <span class="carrito-item__categoria">PokéTienda Pearl</span>
-          <h3 class="carrito-item__nombre">
-            <a class="carrito-item__nombre-enlace"
-               href="detalle-producto.html?id=${encodeURIComponent(i.id)}">
-              ${escapar(i.nombre)}
-            </a>
-          </h3>
-          <ul class="carrito-item__detalles">
-            <li>
-              <span class="carrito-item__detalle-label">SKU:</span>
-              <code class="carrito-item__sku">${i.id}</code>
-            </li>
-            <li>
-              <span class="carrito-item__detalle-label">Estado:</span>
-              <span class="badge badge--exito">Disponible</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="carrito-item__acciones">
-          <div class="carrito-item__precios">
-            <span class="carrito-item__precio-unitario">
-              ${fmtCLP(i.precio)} <small class="carrito-item__precio-unidad">c/u</small>
-            </span>
-            <span class="carrito-item__subtotal precio" data-id="${i.id}">
-              ${fmtCLP(i.precio * i.cantidad)}
-            </span>
-          </div>
-
-          <div class="selector-cantidad" role="group" aria-label="Cantidad de ${escapar(i.nombre)}">
-            <button class="selector-cantidad__btn" type="button"
-                    data-accion="restar" data-id="${i.id}"
-                    aria-label="Disminuir cantidad de ${escapar(i.nombre)}">−</button>
-            <span class="selector-cantidad__valor" data-id="${i.id}" aria-live="polite">${i.cantidad}</span>
-            <button class="selector-cantidad__btn" type="button"
-                    data-accion="sumar" data-id="${i.id}"
-                    aria-label="Aumentar cantidad de ${escapar(i.nombre)}">+</button>
-          </div>
-
-          <button class="carrito-item__quitar" type="button"
-                  data-accion="eliminar" data-id="${i.id}"
-                  aria-label="Quitar ${escapar(i.nombre)} del carrito">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                 role="img" aria-hidden="true" focusable="false">
-              <polyline points="3 6 5 6 21 6"></polyline>
-              <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
-              <path d="M10 11v6"></path>
-              <path d="M14 11v6"></path>
-              <path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
-            </svg>
-            <span>Quitar</span>
-          </button>
-        </div>`;
-      frag.appendChild(art);
-    });
-    cont.appendChild(frag);
-
+    /* --- 4. Totales — SIEMPRE, incluso con carrito vacío --- */
     const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
     set('carrito-subtotal',  fmtCLP(subtotal));
     set('carrito-total',     fmtCLP(total));
@@ -277,6 +277,7 @@
     const pct = document.getElementById('carrito-descuento-pct');
     if (pct) pct.textContent = cupon && cupon.tipo === 'pct' ? `(${cupon.valor} %)` : '(0 %)';
 
+    /* --- 5. Estado de cupones — SIEMPRE --- */
     const formCupon = document.getElementById('form-cupon');
     const banner    = document.getElementById('cupon-aplicado');
     const txtCupon  = document.getElementById('cupon-aplicado-codigo');
@@ -287,6 +288,7 @@
     if (errCupon)  { errCupon.textContent = ''; errCupon.hidden = true; }
     if (txtCupon && cupon) txtCupon.textContent = cupon.codigo || '';
 
+    /* --- 6. Header --- */
     renderContadorHeader();
   }
 
@@ -361,7 +363,7 @@
   });
 
   /* ============================================================
-     SINCRONIZACIÓN ENTRE PESTAÑAS Y ARRANQUE
+     SINCRONIZACIÓN Y ARRANQUE
      ============================================================ */
   window.addEventListener('storage', (e) => {
     if (e.key === CLAVE_CARRITO || e.key === CLAVE_CARRITO + ':cupon') {
@@ -381,7 +383,7 @@
   });
 
   /* ============================================================
-     API PÚBLICA — lo único que otros archivos pueden tocar
+     API PÚBLICA
      ============================================================ */
   window.carrito = {
     agregar:      agregarAlCarrito,
@@ -395,10 +397,8 @@
     feedback:     mostrarFeedback,
   };
 
-  // Alias sueltos por compatibilidad con detalle-producto.js
   window.agregarAlCarrito = agregarAlCarrito;
   window.totales          = totales;
 
-  // Log de arranque — útil para verificar que el archivo cargó sin errores
   console.info('%c[carrito.js] cargado correctamente.', 'color:#28A745;font-weight:bold;');
 })();
