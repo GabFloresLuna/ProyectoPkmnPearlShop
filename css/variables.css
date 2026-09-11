@@ -1,0 +1,67 @@
+/* ============================================================
+   variables.css — Sistema de diseño (tokens)
+   PokéTienda Pearl — Identidad Visual v2.0
+   ============================================================ */
+
+/* Las @import de fuentes SIEMPRE van primero, antes de cualquier regla */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Inter:wght@400;600&family=Fredoka+One&display=swap');
+
+:root {
+  /* --- Colores principales --- */
+  --color-primario:      #D63384;
+  --color-secundario:    #4A148C;
+  --color-acento:        #FFC107;
+  --color-acento-2:      #1E90FF;
+  --color-fondo:         #1A052A;
+  --color-fondo-alt:     #2A1B3D;
+  --color-fondo-claro:   #F8F9FA;
+  --color-texto:         #FFFFFF;
+  --color-texto-sec:     #B0B0B0;
+  --color-borde:         #4A148C;
+
+  /* --- Estados de feedback --- */
+  --color-exito:         #28A745;
+  --color-error:         #DC3545;
+  --color-advertencia:   #FFC107;
+  --color-info:          #17A2B8;
+
+  /* --- Tipografía --- */
+  --font-titulos: 'Orbitron', system-ui, sans-serif;
+  --font-cuerpo:  'Inter', system-ui, -apple-system, sans-serif;
+  --font-acentos: 'Fredoka One', cursive;
+
+  /* --- Espaciado --- */
+  --espacio-xs:  0.25rem;
+  --espacio-sm:  0.5rem;
+  --espacio-md:  1rem;
+  --espacio-lg:  1.5rem;
+  --espacio-xl:  2rem;
+  --espacio-2xl: 3rem;
+
+  /* --- Bordes --- */
+  --radio-sm:   4px;
+  --radio-md:   8px;
+  --radio-lg:   16px;
+  --radio-full: 999px;
+
+  /* --- Sombras --- */
+  --sombra-sm:    0 2px 4px rgba(0, 0, 0, 0.30);
+  --sombra-md:    0 4px 8px rgba(0, 0, 0, 0.40);
+  --sombra-lg:    0 8px 16px rgba(0, 0, 0, 0.50);
+  --sombra-hover: 0 4px 16px rgba(214, 51, 132, 0.40);
+
+  /* --- Gradientes --- */
+  --gradiente-header: linear-gradient(135deg, #4A148C 0%, #1A052A 100%);
+  --gradiente-hero:   linear-gradient(160deg, #1A052A 0%, #2A1B3D 50%, #4A148C 100%);
+  --gradiente-perla:  radial-gradient(circle at 30% 30%, #FFFFFF 0%, #D63384 50%, #4A148C 100%);
+  --gradiente-boton:  linear-gradient(135deg, #D63384 0%, #4A148C 100%);
+
+  /* --- Layout --- */
+  --ancho-contenedor: 1200px;
+  --altura-header:    72px;
+  --altura-topbar:    64px;
+  --ancho-sidebar:    260px;
+
+  /* --- Transiciones --- */
+  --transicion: 200ms ease-in-out;
+}
