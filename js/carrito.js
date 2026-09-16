@@ -303,10 +303,22 @@
     const id     = btn.getAttribute('data-id');
 
     switch (accion) {
-      case 'agregar':
+      case 'agregar':{
         e.preventDefault();
-        agregarAlCarrito(id, btn.dataset.nombre, btn.dataset.precio, 1);
+        const formCompra = btn.closest('#form-compra');
+        let cantidad = 1;
+        if (formCompra) {
+          const inputCantidad = formCompra.querySelector('#cantidad');
+          if (inputCantidad){
+            const min = Number(inputCantidad.min) || 1;
+            const max = Number(inputCantidad.max) || 10;
+            const valor = parseInt(inputCantidad.value, 10);
+            cantidad = Number.isNaN(valor) ? min : Math.min(Math.max(valor, min), max);
+          }
+        }
+        agregarAlCarrito(id, btn.dataset.nombre, btn.dataset.precio, cantidad);
         break;
+      }
       case 'sumar':    e.preventDefault(); cambiarCantidad(id, +1); break;
       case 'restar':   e.preventDefault(); cambiarCantidad(id, -1); break;
       case 'eliminar': e.preventDefault(); eliminarDelCarrito(id);  break;

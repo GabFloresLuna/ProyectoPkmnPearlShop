@@ -42,18 +42,42 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Cantidad + añadir
-  let cantidad = 1;
-  const valor = document.getElementById('cantidad-valor');
+  const inputCantidad = document.getElementById('cantidad');
   const btnSum = document.getElementById('btn-sumar');
   const btnRes = document.getElementById('btn-restar');
-  const btnAdd = document.getElementById('btn-anadir');
+  const errorCantidad = document.getElementById('error-cantidad');
 
-  if (btnSum) btnSum.addEventListener('click', () => { cantidad++; if (valor) valor.textContent = cantidad; });
-  if (btnRes) btnRes.addEventListener('click', () => { cantidad = Math.max(1, cantidad - 1); if (valor) valor.textContent = cantidad; });
-  if (btnAdd) btnAdd.addEventListener('click', () => {
-    window.agregarAlCarrito(producto.id, producto.nombre, producto.precio, cantidad);
+  if (inputCantidad) {
+    const min = Number(inputCantidad.min) || 1;
+    const max = Number(inputCantidad.max) || 10;
+  }
+
+  const validarCantidad = () => {
+    let valor = parseInt(inputCantidad.value, 10);
+    if (Number.isNaN(valor))valor = min;
+
+    if (valor < min || valor > max){
+      if (errorCantidad){ 
+        errorCantidad.textContent = `Cantidad debe estar entre ${min} y ${max} unidades.`;
+        errorCantidad.hidden = false;
+      }
+      valor = Math.min(Math.max(valor, min), max);
+    }else if (errorCantidad) {
+    errorCantidad.hidden = true;
+    }
+    inputCantidad.value = valor;
+  };
+
+  if (btnRes) btnRes.addEventListener('click', () => {
+    inputCantidad.value = Math.max(min, (parseInt(inputCantidad.value, 10) || min) - 1);
+    validarCantidad();
   });
-
+  if (btnSum) btnSum.addEventListener('click', () => {
+    inputCantidad.value = Math.min(max, (parseInt(inputCantidad.value, 10) || min) + 1);
+    validarCantidad();
+  });
+  inputCantidad.addEventListener('change', validarCantidad);
+  inputCantidad.addEventListener('blur', validarCantidad);
   // Relacionados
   const rel = document.getElementById('lista-relacionados');
   if (rel) {
