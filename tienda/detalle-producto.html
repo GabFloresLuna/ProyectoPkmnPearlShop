@@ -9,7 +9,7 @@
 
   <title>Figura Palkia Legendaria | PokéTienda Pearl</title>
 
-  <!-- Favicon (versión compacta del logo: solo la perla) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon-perla.svg">
 
   <!-- Tipografías: Orbitron (títulos), Inter (cuerpo), Fredoka One (acentos) -->
@@ -30,7 +30,7 @@
   <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
 
   <!-- ==========================================================
-       HEADER: logo + navegación principal + carrito de compras
+       HEADER
        ========================================================== -->
   <header class="site-header">
 
@@ -52,7 +52,7 @@
         <span class="logo__texto">PokéTienda&nbsp;Pearl</span>
       </a>
 
-      <!-- BOTÓN HAMBURGUESA (móvil) -->
+      <!-- BOTÓN HAMBURGUESA (Celular) -->
       <button type="button"
               class="nav-toggle"
               id="nav-toggle"
@@ -130,8 +130,6 @@
 
     <!-- ------------------------------------------------------
          DETALLE DEL PRODUCTO
-         Estructura: galería (izq.) + panel de compra (der.)
-         Los data-* del botón alimentan carrito.js
          ------------------------------------------------------ -->
     <article class="detalle-producto" data-id="P001" data-nombre="Figura Palkia Legendaria" data-precio="24990">
 
@@ -152,7 +150,7 @@
                  loading="eager" decoding="async">
           </figure>
 
-          <!-- Miniaturas (controladas por detalle-producto.js) -->
+          <!-- Miniaturas  -->
           <ul class="galeria__miniaturas" role="list" aria-label="Miniaturas del producto">
             <li>
               <button type="button"
@@ -203,7 +201,7 @@
             Figura Palkia Legendaria
           </h1>
 
-          <!-- Valoración (opcional, valor agregado) -->
+          <!-- Valoración  -->
           <p class="detalle-producto__valoracion" aria-label="Valoración: 4,8 de 5 estrellas">
             <span class="detalle-producto__estrellas" aria-hidden="true">★★★★★</span>
             <span class="detalle-producto__valoracion-texto">4,8 · 37 reseñas</span>
@@ -274,7 +272,7 @@
               Añadir al carrito
             </button>
 
-            <!-- Mensaje de confirmación (lo muestra carrito.js) -->
+            <!-- Mensaje de confirmación  -->
             <p class="detalle-producto__feedback" id="feedback-carrito" role="status" aria-live="polite" hidden></p>
 
           </form>
@@ -300,7 +298,6 @@
 
     <!-- ------------------------------------------------------
          PRODUCTOS RELACIONADOS
-         #lista-relacionados es poblado por detalle-producto.js
          ------------------------------------------------------ -->
     <section class="relacionados" aria-labelledby="relacionados-titulo">
       <div class="contenedor">
@@ -310,7 +307,7 @@
           <p class="seccion__subtitulo">Completa tu colección de Sinnoh.</p>
         </header>
 
-        <!-- Grilla de relacionados (contenido de respaldo sin JS) -->
+        <!-- Grilla de relacionados  -->
         <div class="grid-productos grid-productos--relacionados" id="lista-relacionados" aria-live="polite">
 
           <article class="card-producto" data-id="P005">
@@ -407,7 +404,7 @@
   </main>
 
   <!-- ==========================================================
-       FOOTER INFORMATIVO (idéntico al resto del sitio)
+       FOOTER INFORMATIVO 
        ========================================================== -->
   <footer class="site-footer">
 
@@ -496,7 +493,7 @@
     <div class="site-footer__bottom">
       <div class="contenedor site-footer__bottom-inner">
         <p class="site-footer__copy">
-          &copy; 2025 PokéTienda Pearl. Proyecto académico DSY1104 — Todos los derechos reservados.
+          &copy; 2026 PokéTienda Pearl. Todos los derechos reservados.
         </p>
         <p class="site-footer__version">Identidad visual v2.0</p>
       </div>
@@ -504,12 +501,7 @@
 
   </footer>
 
-  <!-- ==========================================================
-       SCRIPTS
-       detalle-producto.js: galería, cantidad, relacionados
-       carrito.js: localStorage, badge y feedback
-       main.js: menú móvil
-       ========================================================== -->
+
   <script src="assets/js/productos.js" defer></script>
   <script src="assets/js/detalle-producto.js" defer></script>
   <script src="assets/js/carrito.js" defer></script>
