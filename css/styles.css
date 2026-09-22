@@ -1,11 +1,3 @@
-/* ============================================================
-   styles.css — PokéTienda Pearl (v3.0 optimizado)
-   Naming BEM real del HTML + reglas consolidadas.
-   Requiere: variables.css cargado ANTES.
-   Reducción: ~38 % menos líneas, sin selectores huérfanos.
-   ============================================================ */
-
-
 /* ------------------------------------------------------------
    1. RESET Y BASE
    ------------------------------------------------------------ */
