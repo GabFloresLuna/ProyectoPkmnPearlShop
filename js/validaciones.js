@@ -1,13 +1,3 @@
-/**
- * validaciones.js — PokéTienda Pearl (v2 — scope aislado)
- *
- * Envuelto en IIFE para evitar colisiones de const/función con otros
- * scripts del proyecto (productos.js, carrito.js, main.js).
- * La API pública se expone explícitamente en window al final.
- *
- * Depende de: nada.
- * Expone: window.V, window.marcarCampo, window.$, window.$$, window.DOMINIOS_PERMITIDOS
- */
 (function () {
   'use strict';
 
@@ -21,10 +11,6 @@
   const $  = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-  /**
-   * Pinta el estado de un campo: borde, mensaje de error y aria-invalid.
-   * El párrafo de error debe existir en el HTML con id="{campo}-error".
-   */
   function marcarCampo(input, resultado) {
     const idError = `${input.id}-error`;
     const pError  = document.getElementById(idError);
@@ -85,10 +71,11 @@
 
     run: (v) => {
       if (!v) return { ok: false, mensaje: 'El RUN es obligatorio.' };
-      const limpio = v.replace(/[.\-\s]/g, '');
-      if (!RE_RUN.test(limpio))
-        return { ok: false, mensaje: 'RUN inválido (7 a 9 caracteres, sin puntos ni guion).' };
-      if (!validarDV(limpio))
+      if (/[.\-\s]/.test(v))
+        return { ok: false, mensaje: 'El RUN no debe llevar puntos, guion ni espacios (ej: 19011022K).' };
+      if (!RE_RUN.test(v))
+        return { ok: false, mensaje: 'RUN inválido: solo números, y "K" únicamente como dígito verificador (7 a 9 caracteres).' };
+      if (!validarDV(v))
         return { ok: false, mensaje: 'El dígito verificador del RUN no es válido.' };
       return { ok: true, mensaje: '' };
     },

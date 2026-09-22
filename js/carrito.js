@@ -1,14 +1,3 @@
-/**
- * carrito.js — PokéTienda Pearl (v4 — totales siempre actualizados)
- *
- * Cambios respecto a v3:
- *   - Los totales del resumen se actualizan SIEMPRE, incluso con
- *     carrito vacío (antes un return temprano los dejaba hardcodeados).
- *   - Un solo flujo: render de ítems condicional, totales incondicionales.
- *   - Conserva IIFE, hooks BEM y API pública.
- *
- * Requiere en styles.css:  [hidden] { display: none !important; }
- */
 (function () {
   'use strict';
 

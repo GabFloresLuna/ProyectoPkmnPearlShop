@@ -109,10 +109,6 @@
        ========================================================== -->
   <main id="contenido-principal">
 
-    <!-- ------------------------------------------------------
-         HERO / COMPONENTE PRINCIPAL
-         Información e imagen representativa de la tienda
-         ------------------------------------------------------ -->
     <section class="hero" aria-labelledby="hero-titulo">
       <div class="contenedor hero__inner">
 
@@ -160,11 +156,6 @@
       </div>
     </section>
 
-    <!-- ------------------------------------------------------
-         LISTADO DE PRODUCTOS DESTACADOS
-         El contenedor #lista-productos es re-renderizado por JS
-         a partir del arreglo de objetos "productos".
-         ------------------------------------------------------ -->
     <section class="destacados" aria-labelledby="destacados-titulo">
       <div class="contenedor">
 
@@ -175,9 +166,6 @@
           </p>
         </header>
 
-        <!-- Grilla de productos.
-             Las tarjetas de abajo son contenido de respaldo (sin JS).
-             js/productos.js limpia y vuelve a renderizar este contenedor. -->
         <div class="grid-productos" id="lista-productos" aria-live="polite">
 
           <article class="card-producto" data-id="P001">
@@ -262,8 +250,6 @@
 
         </div>
         <!-- /#lista-productos -->
-
-        <!-- Mensaje alternativo si JavaScript está deshabilitado -->
         <noscript>
           <p class="aviso aviso--info">
             Activa JavaScript para ver el catálogo completo y añadir productos al carrito.
@@ -410,9 +396,6 @@
 
   </footer>
 
-  <!-- ==========================================================
-       SCRIPTS (al final del body, con defer para no bloquear el render)
-       ========================================================== -->
       <!-- Scripts -->
     <script defer src="../js/validaciones.js"></script>
     <script defer src="../js/productos.js"></script>

@@ -1,9 +1,3 @@
-/* ============================================================
-   variables.css — Sistema de diseño (tokens)
-   PokéTienda Pearl — Identidad Visual v2.0
-   ============================================================ */
-
-/* Las @import de fuentes SIEMPRE van primero, antes de cualquier regla */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Inter:wght@400;600&family=Fredoka+One&display=swap');
 
 :root {
