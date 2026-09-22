@@ -6,20 +6,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(location.search);
   const run = params.get('run');
   const modoEdicion = Boolean(run);
-  const titulo = document.getElementById('titulo-formulario');
+  const titulo = document.getElementById('titulo-form-usuario');
   if (titulo) titulo.textContent = modoEdicion ? `Editar usuario ${run}` : 'Nuevo usuario';
+  const subtitulo = document.getElementById('form-titulo');
+  if (subtitulo) subtitulo.textContent = modoEdicion ? `Editar usuario ${run}` : 'Registro de usuario';
+  const breadcrumb = document.getElementById('breadcrumb-accion');
+  if (breadcrumb) breadcrumb.textContent = modoEdicion ? 'Editar usuario' : 'Nuevo usuario';
 
   const campos = {
     run:        { el: form.querySelector('#run'),        reglas: (v) => [V.run(v)] },
     nombre:     { el: form.querySelector('#nombre'),     reglas: (v) => [V.requerido(v, 'El nombre'), V.maxLen(v, 50, 'El nombre'), V.letras(v, 'El nombre')] },
     apellidos:  { el: form.querySelector('#apellidos'),  reglas: (v) => [V.requerido(v, 'Los apellidos'), V.maxLen(v, 100, 'Los apellidos')] },
     correo:     { el: form.querySelector('#correo'),     reglas: (v) => [V.email(v), V.maxLen(v, 100, 'El correo')] },
-    nacimiento: { el: form.querySelector('#nacimiento'), reglas: () => [{ ok: true, mensaje: '' }] },
+    nacimiento: { el: form.querySelector('#fecha-nacimiento'), reglas: () => [{ ok: true, mensaje: '' }] },
     tipo:       { el: form.querySelector('#tipo'),       reglas: (v) => [V.requerido(v, 'El tipo de usuario')] },
     region:     { el: form.querySelector('#region'),     reglas: (v) => [V.requerido(v, 'La región')] },
     comuna:     { el: form.querySelector('#comuna'),     reglas: (v) => [V.requerido(v, 'La comuna')] },
     direccion:  { el: form.querySelector('#direccion'),  reglas: (v) => [V.requerido(v, 'La dirección'), V.maxLen(v, 300, 'La dirección')] },
   };
+
 
   const evaluar = (c) => {
     for (const r of c.reglas(c.el.value)) { if (!r.ok) return marcarCampo(c.el, r); }
