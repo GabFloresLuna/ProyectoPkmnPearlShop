@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> 3ff478c2ce93db7f15759b9acca7ec192b114678
 /* ------------------------------------------------------------
    1. RESET Y BASE
    ------------------------------------------------------------ */
@@ -249,7 +253,6 @@ select option:hover {
   display: grid; grid-template-columns: 1fr 1fr; gap: var(--espacio-md);
 }
 
-/* Feedback genérico (carrito, login, registro, contacto) */
 .formulario__feedback {
   padding: var(--espacio-sm) var(--espacio-md);
   border-radius: var(--radio-md);
