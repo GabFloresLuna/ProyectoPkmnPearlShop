@@ -80,7 +80,6 @@ main { flex: 1 0 auto; }
   flex-shrink: 0;
 }
 .logo:hover, .logo:focus-visible { color: var(--color-acento); }
-.logo__icono { width: 40px; height: 40px; flex-shrink: 0; }
 .logo__texto { white-space: nowrap; }
 
 /* Botón hamburguesa */
