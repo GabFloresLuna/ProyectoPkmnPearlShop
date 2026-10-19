@@ -1,0 +1,56 @@
+/* ============================================================
+   overrides.css — ajustes para convivir con React y Bootstrap.
+   Se importa DESPUÉS de bootstrap.min.css, variables.css y styles.css.
+   ============================================================ */
+
+/* React monta todo dentro de #root: el layout de columna que antes tenía <body> pasa a #root */
+#root { display: flex; flex-direction: column; flex: 1; width: 100%; max-width: none; margin: 0; border: 0; text-align: left; }
+#contenido-principal { flex: 1; }
+
+/* Bootstrap define .breadcrumb como flex con margen inferior: aquí es solo un contenedor */
+.breadcrumb { display: block; margin-bottom: 0; padding: 0; }
+
+/* El menú puede tener hasta 9 ítems: que no desborde */
+.nav__lista { flex-wrap: wrap; }
+button.nav__enlace { background: none; border: 0; cursor: pointer; font: inherit; }
+
+/* Utilidades propias */
+.texto-sec { color: var(--color-texto-sec); }
+.precio-anterior { color: var(--color-texto-sec); font-weight: 400; font-size: 0.85em; margin-right: 0.5rem; }
+.checkout__total { font-size: 1.05rem; padding: 0.6rem 1rem; }
+.campo--check .campo__error { flex-basis: 100%; }
+
+/* Categorías */
+.categoria-tile {
+  display: flex; flex-direction: column; gap: 0.25rem; height: 100%;
+  padding: var(--espacio-md); border: 1px solid var(--color-borde); border-radius: var(--radio-lg);
+  background: var(--color-fondo-alt); color: var(--color-texto); text-align: center;
+  transition: border-color var(--transicion), transform var(--transicion);
+}
+.categoria-tile:hover, .categoria-tile:focus-visible { border-color: var(--color-primario); transform: translateY(-3px); color: var(--color-acento); }
+.categoria-tile--activa { border-color: var(--color-acento); background: rgba(214, 51, 132, 0.2); }
+.categoria-tile__cantidad { font-size: 0.8rem; color: var(--color-texto-sec); }
+
+/* Panel admin: acceso rápido, botón de menú móvil y cierre de sesión */
+.admin-acceso { color: var(--color-texto); }
+.admin-acceso__titulo { color: var(--color-acento); font-family: var(--font-titulos); }
+.admin-sidebar__salir { width: 100%; background: transparent; border: 0; border-left: 3px solid transparent; text-align: left; cursor: pointer; font: inherit; }
+.admin-sidebar__link--activo { background: rgba(214, 51, 132, 0.20); color: var(--color-acento); border-left-color: var(--color-acento); font-weight: 700; }
+.admin-toggle { display: none; background: transparent; border: 1px solid var(--color-borde); color: var(--color-texto); border-radius: var(--radio-sm); padding: 0.3rem 0.7rem; font-size: 1.2rem; cursor: pointer; }
+@media (max-width: 768px) {
+  .admin-layout { grid-template-columns: 1fr; }
+  .admin-toggle { display: inline-block; }
+  .admin-sidebar { position: fixed; inset: 0 auto 0 0; width: var(--ancho-sidebar); z-index: 100; transform: translateX(-100%); transition: transform var(--transicion); }
+  .admin-sidebar[data-abierto="true"] { transform: none; }
+  .admin-contenido { padding: var(--espacio-md); }
+}
+
+/* Reporte de barras */
+.reporte-barras { display: flex; flex-direction: column; gap: var(--espacio-md); }
+.reporte-barras__pista { height: 10px; border-radius: var(--radio-full); background: rgba(74, 20, 140, 0.5); overflow: hidden; margin-top: 4px; }
+.reporte-barras__barra { height: 100%; background: var(--gradiente-boton); }
+
+/* Imprimir boleta: solo el contenido */
+@media print {
+  .site-header, .site-footer, .skip-link, .admin-sidebar, .admin-topbar, .admin-footer, .boton { display: none !important; }
+}
