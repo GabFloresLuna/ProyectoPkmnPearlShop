@@ -6,13 +6,7 @@ panel de administración, Bootstrap y pruebas con **Jasmine + Karma**.
 ## 1. Cómo integrarlo en tu proyecto (`poketienda-react`)
 
 1. Descomprime este ZIP **encima** de tu proyecto (mezcla carpetas; reemplaza `index.html`).
-2. **Borra** `src/index.css`, `src/App.css` y `src/assets/` (son del template de Vite y ya no se usan).
-3. Copia tu carpeta `images/` original **dentro de `public/images/`** (las rutas son `/images/archivo.ext`).
-   Archivos usados: `figuraPalkiaLegendaria1/2/3.webp`, `perlaCosmicaDecorativa.jpg`, `setCartasSinnoh.jpeg`,
-   `consolaEdicionPerla.jpg`, `estuchePokemonPearl.jpeg`, `albumColeccionistaSinnoh.webp`,
-   `lamparaCosmicaGiratina.webp`, `figuraPalkiaTemporal1.jpg`, `blog-perla-mitologia.jpg`, `blog-gen4.jpeg`,
-   `gabrielFlores.png`, `danielRangel.jpg`, `danielRangel2.jpg`, `hernaldoSilva.png`.
-4. Instala dependencias (en la carpeta del proyecto):
+2. Instala dependencias (en la carpeta del proyecto):
 
 ```bash
 npm install react-router-dom bootstrap
