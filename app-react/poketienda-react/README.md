@@ -16,9 +16,6 @@ npm install -D karma karma-jasmine jasmine-core karma-chrome-launcher karma-esbu
 5. En `package.json`, dentro de `"scripts"`, agrega:  `"test": "karma start karma.conf.cjs"`
 6. Ejecuta `npm run dev` (app) y `npm test` (pruebas; requiere Google Chrome instalado).
 
-> Las pruebas de lógica (datos, validaciones, carrito, reportes, pedidos) se verificaron ejecutándolas en Node.
-> Las pruebas de **componentes** y la compilación con Vite deben correrse en tu equipo: si alguna falla, pega el mensaje y se corrige.
-
 ## 2. Cuentas de demostración
 
 | Perfil | Correo | Contraseña |
