@@ -16,7 +16,7 @@ function Layout() {
   return (
     <>
       <Header />
-      <main className="container py-4 flex-grow-1">
+      <main className="contenido-principal container py-4 flex-grow-1">
         <Outlet />
       </main>
       <Footer />
@@ -26,9 +26,9 @@ function Layout() {
 
 function NoEncontrado() {
   return (
-    <div className="text-center py-5">
+    <div className="pagina-no-encontrada text-center py-5">
       <h1>404 · Página no encontrada</h1>
-      <Link to="/" className="btn btn-pearl">Volver al inicio</Link>
+      <Link to="/" className="btn boton-perla">Volver al inicio</Link>
     </div>
   );
 }

@@ -29,17 +29,17 @@ export default function Productos() {
       <h1 className="h2">Productos</h1>
       <p className="text-secondary">Explora toda la colección Edición Perla.</p>
 
-      <div className="row g-2 mb-4" role="search">
-        <div className="col-md-4">
+      <div className="barra-filtros row g-2 mb-4" role="search">
+        <div className="filtro-busqueda col-md-4">
           <input className="form-control" type="search" placeholder="Buscar por nombre…" aria-label="Buscar productos" value={q} onChange={(e) => setQ(e.target.value)} />
         </div>
-        <div className="col-6 col-md-3">
+        <div className="filtro-categoria col-6 col-md-3">
           <select className="form-select" aria-label="Categoría" value={categoria} onChange={(e) => setCategoria(e.target.value)}>
             <option value="">Todas las categorías</option>
             {categorias.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
         </div>
-        <div className="col-6 col-md-3">
+        <div className="filtro-orden col-6 col-md-3">
           <select className="form-select" aria-label="Ordenar por" value={orden} onChange={(e) => setOrden(e.target.value)}>
             <option value="">Relevancia</option>
             <option value="precio-asc">Precio: menor a mayor</option>
@@ -47,8 +47,8 @@ export default function Productos() {
             <option value="nombre">Nombre (A-Z)</option>
           </select>
         </div>
-        <div className="col-md-2 d-flex align-items-center">
-          <div className="form-check">
+        <div className="filtro-ofertas col-md-2 d-flex align-items-center">
+          <div className="casilla-ofertas form-check">
             <input className="form-check-input" type="checkbox" id="ofertas" checked={soloOfertas} onChange={(e) => setSoloOfertas(e.target.checked)} />
             <label className="form-check-label" htmlFor="ofertas">Solo ofertas</label>
           </div>
@@ -56,11 +56,11 @@ export default function Productos() {
       </div>
 
       {lista.length === 0 ? (
-        <p className="alert alert-info" role="status">Ningún producto coincide con tu búsqueda.</p>
+        <p className="aviso-sin-resultados alert alert-info" role="status">Ningún producto coincide con tu búsqueda.</p>
       ) : (
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
+        <div className="lista-productos row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
           {lista.map((p) => (
-            <div className="col" key={p.id}>
+            <div className="columna-producto col" key={p.id}>
               <CardProducto producto={p} onAgregar={agregar} />
             </div>
           ))}

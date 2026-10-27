@@ -42,25 +42,25 @@ export default function Carrito() {
 
   if (resultado) {
     return resultado.aprobado ? (
-      <div className="alert alert-success" role="status">
+      <div className="pago-aprobado alert alert-success" role="status">
         <h1 className="h4">¡Compra realizada!</h1>
         <p>Orden #{resultado.orden.id} · Total pagado: {formatoCLP(resultado.orden.total)}</p>
-        <Link to="/productos" className="btn btn-pearl">Seguir comprando</Link>
+        <Link to="/productos" className="btn boton-perla">Seguir comprando</Link>
       </div>
     ) : (
-      <div className="alert alert-danger" role="alert">
+      <div className="pago-rechazado alert alert-danger" role="alert">
         <h1 className="h4">No se pudo realizar el pago</h1>
         <p>Orden #{resultado.orden.id}. Tu carrito se mantiene para que lo intentes de nuevo.</p>
-        <button type="button" className="btn btn-pearl" onClick={() => setResultado(null)}>Volver a realizar el pago</button>
+        <button type="button" className="btn boton-perla" onClick={() => setResultado(null)}>Volver a realizar el pago</button>
       </div>
     );
   }
 
   if (carrito.length === 0) {
     return (
-      <div className="text-center py-5">
+      <div className="carrito-vacio text-center py-5">
         <h1>Tu carrito está vacío</h1>
-        <Link to="/productos" className="btn btn-pearl">Explorar productos</Link>
+        <Link to="/productos" className="btn boton-perla">Explorar productos</Link>
       </div>
     );
   }
@@ -68,7 +68,7 @@ export default function Carrito() {
   return (
     <>
       <h1 className="h2 mb-3">Mi carrito</h1>
-      <div className="table-responsive">
+      <div className="tabla-carrito table-responsive">
         <table className="table align-middle">
           <thead>
             <tr><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th><th></th></tr>
@@ -76,7 +76,7 @@ export default function Carrito() {
           <tbody>
             {carrito.map((i) => (
               <tr key={i.id}>
-                <td><img src={i.img} alt="" width="48" height="48" className="rounded me-2" />{i.nombre}</td>
+                <td><img src={i.img} alt="" width="48" height="48" className="imagen-carrito rounded me-2" />{i.nombre}</td>
                 <td>{formatoCLP(i.precio)}</td>
                 <td>
                   <button type="button" className="btn btn-sm btn-outline-light" aria-label={`Disminuir ${i.nombre}`} onClick={() => cambiarCantidad(i.id, -1)}>−</button>
@@ -94,17 +94,17 @@ export default function Carrito() {
         </table>
       </div>
 
-      <form className="row g-3 mt-2" onSubmit={pagar} noValidate>
-        <div className="col-md-4"><Campo id="nombre" etiqueta="Nombre completo" value={datos.nombre} onChange={cambiar} error={errores.nombre} /></div>
-        <div className="col-md-4"><Campo id="direccion" etiqueta="Dirección de entrega" value={datos.direccion} onChange={cambiar} error={errores.direccion} /></div>
-        <div className="col-md-4">
+      <form className="formulario-pago row g-3 mt-2" onSubmit={pagar} noValidate>
+        <div className="columna-nombre col-md-4"><Campo id="nombre" etiqueta="Nombre completo" value={datos.nombre} onChange={cambiar} error={errores.nombre} /></div>
+        <div className="columna-direccion col-md-4"><Campo id="direccion" etiqueta="Dirección de entrega" value={datos.direccion} onChange={cambiar} error={errores.direccion} /></div>
+        <div className="columna-resultado-pago col-md-4">
           <Campo id="pago" etiqueta="Resultado simulado del pago" como="select" value={datos.pago} onChange={cambiar}>
             <option value="aprobado">Pago aprobado</option>
             <option value="rechazado">Pago rechazado</option>
           </Campo>
         </div>
-        <div className="col-12 d-flex gap-2">
-          <button type="submit" className="btn btn-pearl">Pagar {formatoCLP(total)}</button>
+        <div className="columna-botones col-12 d-flex gap-2">
+          <button type="submit" className="btn boton-perla">Pagar {formatoCLP(total)}</button>
           <button type="button" className="btn btn-outline-light" onClick={vaciar}>Vaciar carrito</button>
         </div>
       </form>

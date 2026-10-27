@@ -12,13 +12,13 @@
 #root { display: flex; flex-direction: column; min-height: 100vh; }
 h1, h2, h3, .navbar-brand { font-family: 'Orbitron', sans-serif; }
 
-.site-nav { background: linear-gradient(135deg, #4a148c, #1a052a); }
-.btn-pearl { background: linear-gradient(135deg, #d63384, #4a148c); color: #fff; border: 0; }
-.btn-pearl:hover, .btn-pearl:focus-visible { filter: brightness(1.2); color: #fff; }
+.barra-navegacion { background: linear-gradient(135deg, #4a148c, #1a052a); }
+.boton-perla { background: linear-gradient(135deg, #d63384, #4a148c); color: #fff; border: 0; }
+.boton-perla:hover, .boton-perla:focus-visible { filter: brightness(1.2); color: #fff; }
 
 .card { --bs-card-bg: #2a1b3d; --bs-card-border-color: #4a148c; }
 .card-img-top { aspect-ratio: 1 / 1; object-fit: cover; }
 .table { --bs-table-bg: transparent; }
 
-.hero-img { max-height: 380px; object-fit: cover; }
+.imagen-portada { max-height: 380px; object-fit: cover; }
 .precio-anterior { opacity: 0.6; margin-right: 0.5rem; font-weight: 400; }

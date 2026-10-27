@@ -88,14 +88,14 @@ export default function Blogs() {
     const a = ARTICULOS.find((x) => x.id === id);
     if (!a) {
       return (
-        <div className="text-center py-5">
+        <div className="pagina-no-encontrada text-center py-5">
           <h1>Artículo no encontrado</h1>
-          <Link className="btn btn-pearl" to="/blogs">Volver al listado</Link>
+          <Link className="btn boton-perla" to="/blogs">Volver al listado</Link>
         </div>
       );
     }
     return (
-      <article className="mx-auto" style={{ maxWidth: 760 }}>
+      <article className="articulo mx-auto" style={{ maxWidth: 760 }}>
         <p className="text-uppercase text-warning mb-1">{a.categoria}</p>
         <h1 className="h2">{a.titulo}</h1>
         <p className="text-secondary">{a.fecha} · {a.lectura} · {a.autor}</p>
@@ -117,17 +117,17 @@ export default function Blogs() {
       <p className="text-uppercase text-warning mb-1">Bitácora de Sinnoh</p>
       <h1 className="h2">Noticias importantes</h1>
       <p className="text-secondary">Datos curiosos, historia de la Generación IV y todo lo que un coleccionista de la era DS debería saber.</p>
-      <div className="row g-4">
+      <div className="lista-articulos row g-4">
         {ARTICULOS.map((a) => (
-          <div className="col-md-6" key={a.id}>
-            <div className="card h-100">
-              <img src={a.img} alt={a.titulo} className="card-img-top" />
-              <div className="card-body">
+          <div className="columna-articulo col-md-6" key={a.id}>
+            <div className="tarjeta-articulo card h-100">
+              <img src={a.img} alt={a.titulo} className="imagen-articulo card-img-top" />
+              <div className="cuerpo-tarjeta card-body">
                 <small className="text-warning">{a.categoria}</small>
                 <h2 className="h5">{a.titulo}</h2>
                 <p className="small text-secondary">{a.fecha} · {a.lectura}</p>
                 <p>{a.resumen}</p>
-                <Link className="btn btn-pearl" to={`/blogs/${a.id}`}>Ver artículo</Link>
+                <Link className="btn boton-perla" to={`/blogs/${a.id}`}>Ver artículo</Link>
               </div>
             </div>
           </div>

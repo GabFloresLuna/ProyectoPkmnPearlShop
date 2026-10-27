@@ -28,7 +28,7 @@ export default function Contacto() {
   };
 
   return (
-    <div className="mx-auto" style={{ maxWidth: 560 }}>
+    <div className="pagina-contacto mx-auto" style={{ maxWidth: 560 }}>
       <h1 className="h2">Contacto</h1>
       <p className="text-secondary">¿Dudas sobre un producto o un pedido? Escríbenos.</p>
       <form onSubmit={enviar} noValidate>
@@ -36,8 +36,8 @@ export default function Contacto() {
         <Campo id="correo" etiqueta="Correo electrónico" type="email" value={valores.correo} onChange={cambiar} error={errores.correo} />
         <Campo id="comentario" etiqueta="Comentario" como="textarea" rows="5" maxLength="500" value={valores.comentario} onChange={cambiar} error={errores.comentario} />
         <p className="small text-secondary">{valores.comentario.length}/500 caracteres</p>
-        {enviado && <div className="alert alert-success" role="status">¡Mensaje enviado! Te contactaremos pronto.</div>}
-        <button type="submit" className="btn btn-pearl">Enviar mensaje</button>
+        {enviado && <div className="aviso-exito alert alert-success" role="status">¡Mensaje enviado! Te contactaremos pronto.</div>}
+        <button type="submit" className="btn boton-perla">Enviar mensaje</button>
       </form>
     </div>
   );

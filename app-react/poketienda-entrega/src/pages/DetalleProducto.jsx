@@ -14,9 +14,9 @@ export default function DetalleProducto() {
 
   if (!producto) {
     return (
-      <div className="text-center py-5">
+      <div className="pagina-no-encontrada text-center py-5">
         <h1>Producto no encontrado</h1>
-        <Link className="btn btn-pearl" to="/productos">Volver al catálogo</Link>
+        <Link className="btn boton-perla" to="/productos">Volver al catálogo</Link>
       </div>
     );
   }
@@ -33,11 +33,11 @@ export default function DetalleProducto() {
 
   return (
     <>
-      <div className="row g-4">
-        <div className="col-md-6">
-          <img className="img-fluid rounded-4" src={producto.img} alt={producto.nombre} />
+      <div className="detalle-producto row g-4">
+        <div className="columna-imagen col-md-6">
+          <img className="imagen-detalle img-fluid rounded-4" src={producto.img} alt={producto.nombre} />
         </div>
-        <div className="col-md-6">
+        <div className="columna-informacion col-md-6">
           <small className="text-secondary">{producto.categoria}</small>
           <h1 className="h2">{producto.nombre}</h1>
           <p className="fs-4 fw-bold">
@@ -47,14 +47,14 @@ export default function DetalleProducto() {
           <p>{producto.desc}</p>
           <p className="text-secondary">{producto.stock > 0 ? `${producto.stock} unidades disponibles` : 'Agotado'}</p>
 
-          <div className="input-group mb-2" style={{ maxWidth: 220 }}>
+          <div className="selector-cantidad input-group mb-2" style={{ maxWidth: 220 }}>
             <button type="button" className="btn btn-outline-light" aria-label="Disminuir cantidad" onClick={() => cambiarCantidad(cantidad - 1)}>−</button>
             <input className="form-control text-center" type="number" aria-label="Cantidad" value={cantidad} onChange={(e) => cambiarCantidad(e.target.value)} />
             <button type="button" className="btn btn-outline-light" aria-label="Aumentar cantidad" onClick={() => cambiarCantidad(cantidad + 1)}>+</button>
           </div>
-          {aviso && <div className="text-warning mb-2" role="alert">{aviso}</div>}
+          {aviso && <div className="aviso-cantidad text-warning mb-2" role="alert">{aviso}</div>}
 
-          <button type="button" className="btn btn-pearl" disabled={producto.stock <= 0} onClick={() => agregar(producto, cantidad)}>
+          <button type="button" className="btn boton-perla" disabled={producto.stock <= 0} onClick={() => agregar(producto, cantidad)}>
             Añadir al carrito
           </button>
         </div>
@@ -63,9 +63,9 @@ export default function DetalleProducto() {
       {relacionados.length > 0 && (
         <>
           <h2 className="h4 mt-5 mb-3">Productos relacionados</h2>
-          <div className="row row-cols-1 row-cols-sm-3 g-4">
+          <div className="lista-relacionados row row-cols-1 row-cols-sm-3 g-4">
             {relacionados.map((p) => (
-              <div className="col" key={p.id}>
+              <div className="columna-producto col" key={p.id}>
                 <CardProducto producto={p} onAgregar={agregar} />
               </div>
             ))}

@@ -40,15 +40,15 @@ export default function Acceso({ modo }) {
   };
 
   return (
-    <div className="mx-auto" style={{ maxWidth: 440 }}>
+    <div className="pagina-acceso mx-auto" style={{ maxWidth: 440 }}>
       <h1 className="h2 mb-3">{registro ? 'Crear cuenta' : 'Iniciar sesión'}</h1>
       <form onSubmit={enviar} noValidate>
         {registro && <Campo id="nombre" etiqueta="Nombre completo" value={valores.nombre} onChange={cambiar} error={errores.nombre} />}
         <Campo id="correo" etiqueta="Correo electrónico" type="email" value={valores.correo} onChange={cambiar} error={errores.correo} />
         <Campo id="password" etiqueta="Contraseña (4 a 10 caracteres)" type="password" value={valores.password} onChange={cambiar} error={errores.password} />
         {registro && <Campo id="confirmar" etiqueta="Confirmar contraseña" type="password" value={valores.confirmar} onChange={cambiar} error={errores.confirmar} />}
-        {mensaje && <div className="alert alert-danger" role="alert">{mensaje}</div>}
-        <button type="submit" className="btn btn-pearl w-100">{registro ? 'Registrarme' : 'Iniciar sesión'}</button>
+        {mensaje && <div className="aviso-error alert alert-danger" role="alert">{mensaje}</div>}
+        <button type="submit" className="btn boton-perla w-100">{registro ? 'Registrarme' : 'Iniciar sesión'}</button>
       </form>
       {!registro && (
         <p className="small text-secondary mt-3">Demo: <code>admin@duoc.cl</code> / <code>admin</code> · <code>cliente@gmail.com</code> / <code>1234</code></p>
