@@ -34,6 +34,6 @@ React · Vite · React Router · Bootstrap 5 · localStorage (persistencia simul
 
 ## Integrantes
 
-- Daniel Rangel
 - Hernaldo Silva
+- Daniel Rangel
 - Gabriel Flores
