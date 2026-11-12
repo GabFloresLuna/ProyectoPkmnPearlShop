@@ -1,0 +1,20 @@
+package cl.poketienda.ms_productos.dto;
+
+import cl.poketienda.ms_productos.model.Categoria;
+
+public record CategoriaResponse(
+        Long id,
+        String nombre,
+        String descripcion,
+        String color
+) {
+
+    public static CategoriaResponse desde(Categoria categoria) {
+        return new CategoriaResponse(
+                categoria.getId(),
+                categoria.getNombre(),
+                categoria.getDescripcion(),
+                categoria.getColor()
+        );
+    }
+}
